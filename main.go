@@ -1,13 +1,20 @@
 package main
 
 import (
+	"crawler/aim/xcar/parser"
 	"crawler/engine"
-	"crawler/zhenai/parser"
+	"crawler/scheduler"
 )
 
 func main() {
-	engine.Run(engine.Request{
-		Url:        "http://www.zhenai.com/zhenghun",
-		ParserFunc: parser.ParseCityList,
+	e := engine.ConcurrentEngine{
+		Scheduler:   &scheduler.SimpleScheduler{},
+		WorkerCount: 20,
+	}
+	e.Run(engine.Request{
+		Url: "http://newcar.xcar.com.cn/car/",
+		ParserFunc: func(c []byte) engine.ParseResult {
+			return parser.ParseBrandList(c, "http://newcar.xcar.com.cn")
+		},
 	})
 }

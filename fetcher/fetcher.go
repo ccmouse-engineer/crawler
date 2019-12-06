@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"golang.org/x/net/html/charset"
@@ -13,8 +14,11 @@ import (
 	"golang.org/x/text/transform"
 )
 
+var limiter = time.Tick(10 * time.Millisecond)
+
 // Fetch发送一个请求并获取响应内容
 func Fetch(url string) ([]byte, error) {
+	<-limiter
 	resp, err := get(url)
 	if err != nil {
 		return nil, err
