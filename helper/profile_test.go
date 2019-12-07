@@ -6,7 +6,7 @@ import (
 )
 
 func TestParseOccupationToDelimitedStr(t *testing.T) {
-	source, err := ioutil.ReadFile("occupation.json")
+	source, err := ioutil.ReadFile("profile_test_data_of_occupation.json")
 	if err != nil {
 		t.Error(err)
 	}

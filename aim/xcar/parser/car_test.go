@@ -22,7 +22,7 @@ func TestParseCar(t *testing.T) {
 		"奥迪A3两厢",
 		"奥迪A4L",
 	}
-	parseResult := ParseCar(c, domain)
+	parseResult := ParseCar(c, domain, "奥迪")
 	if len(parseResult.Items) != resultSize {
 		t.Errorf("result should have %d items; but had %d\n", resultSize, len(parseResult.Items))
 	}
