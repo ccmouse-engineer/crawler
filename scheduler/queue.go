@@ -4,9 +4,15 @@ import (
 	"crawler/engine"
 )
 
+// QueueScheduler调度器接口的队列实现类型
 type QueueScheduler struct {
 	requestChan chan engine.Request      // 请求队列通道
 	workerChan  chan chan engine.Request // 工作队列通道
+}
+
+// WorkerChan提供一个新的工作者通道(传递的是请求)
+func (q *QueueScheduler) WorkerChan() chan engine.Request {
+	return make(chan engine.Request)
 }
 
 // Submit注册请求到请求队列
@@ -19,12 +25,7 @@ func (q *QueueScheduler) WorkerReady(worker chan engine.Request) {
 	q.workerChan <- worker
 }
 
-// ConfigureMasterWorkerChan工作者数据处理主通道
-func (q *QueueScheduler) ConfigureMasterWorkerChan(chan engine.Request) {
-	panic("implement me")
-}
-
-// Run处理请求队列及工作者队列
+// Run运行调度器
 func (q *QueueScheduler) Run() {
 	q.requestChan = make(chan engine.Request)
 	q.workerChan = make(chan chan engine.Request)

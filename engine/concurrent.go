@@ -12,10 +12,14 @@ type ConcurrentEngine struct {
 
 // Scheduler调度器接口类型
 type Scheduler interface {
-	Submit(Request)                         // 注册请求
-	ConfigureMasterWorkerChan(chan Request) // 工作者数据处理主通道
-	WorkerReady(chan Request)
+	ReadyNotifier
+	Submit(Request) // 注册请求
+	WorkerChan() chan Request
 	Run()
+}
+
+type ReadyNotifier interface {
+	WorkerReady(chan Request)
 }
 
 // Run爬虫入口
@@ -26,7 +30,7 @@ func (c *ConcurrentEngine) Run(seeds ...Request) {
 
 	// 创建工作者处理请求
 	for i := 0; i < c.WorkerCount; i++ {
-		createdWorker(out, c.Scheduler)
+		createdWorker(c.Scheduler.WorkerChan(), out, c.Scheduler)
 	}
 
 	// 将请求种子放入到调度器
@@ -53,11 +57,10 @@ func (c *ConcurrentEngine) Run(seeds ...Request) {
 }
 
 // createdWorker创建工作者处理请求
-func createdWorker(out chan ParseResult, s Scheduler) {
-	in := make(chan Request)
+func createdWorker(in chan Request, out chan ParseResult, ready ReadyNotifier) {
 	go func() {
 		for {
-			s.WorkerReady(in)
+			ready.WorkerReady(in)
 			request := <-in
 			parseResult, err := worker(request)
 			if err != nil {
