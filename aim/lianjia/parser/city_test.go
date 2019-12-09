@@ -10,7 +10,8 @@ func TestParseCity(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	const resultSize = 30
+	const resultItemSize = 30
+	const resultRequestSize = 129
 	expectedUrls := []string{
 		"https://aq.lianjia.com/ershoufang/103104788556.html",
 		"https://aq.lianjia.com/ershoufang/103105258596.html",
@@ -22,12 +23,12 @@ func TestParseCity(t *testing.T) {
 		"碧桂园山水云间 3室2厅 102万",
 	}
 	parseResult := ParseCity(c, "安庆", "https://aq.lianjia.com/", true)
-	if len(parseResult.Items) != resultSize {
-		t.Errorf("result should have %d items; but had %d\n", resultSize, len(parseResult.Items))
+	if len(parseResult.Items) != resultItemSize {
+		t.Errorf("result should have %d items; but had %d\n", resultItemSize, len(parseResult.Items))
 	}
 
-	if len(parseResult.Requests) != resultSize {
-		t.Errorf("result should have %d requests; but had %d\n", resultSize, len(parseResult.Requests))
+	if len(parseResult.Requests) != resultRequestSize {
+		t.Errorf("result should have %d requests; but had %d\n", resultRequestSize, len(parseResult.Requests))
 	}
 
 	for idx, url := range expectedUrls {

@@ -22,12 +22,12 @@ func ParseCity(contents []byte, cityName, prefixURL string, isFirstPage bool) (p
 	houses := LinkDeduplication(matchsHouse)
 	for _, house := range houses {
 		for url, title := range house {
-			t := cityName + "|#title" + title + "|#url:" + url
-			parseResult.Items = append(parseResult.Items, t)
+			// title := cityName + "|#title" + title + "|#url:" + url
+			parseResult.Items = append(parseResult.Items, title)
 			parseResult.Requests = append(parseResult.Requests, engine.Request{
 				Url: url,
 				ParserFunc: func(c []byte) engine.ParseResult {
-					return ParseDetail(c, t)
+					return ParseDetail(c, title, cityName)
 				},
 			})
 		}

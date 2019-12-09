@@ -18,9 +18,9 @@ func TestParseCar(t *testing.T) {
 		"http://newcar.xcar.com.cn/car/select/s553/",
 	}
 	expectedCities := []string{
-		"奥迪A3三厢",
-		"奥迪A3两厢",
-		"奥迪A4L",
+		"奥迪|奥迪A3三厢",
+		"奥迪|奥迪A3两厢",
+		"奥迪|奥迪A4L",
 	}
 	parseResult := ParseCar(c, domain, "奥迪")
 	if len(parseResult.Items) != resultSize {

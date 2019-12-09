@@ -5,6 +5,7 @@ type Ershoufang struct {
 	Title                  string                           // 房源标题
 	Price                  float64                          // 总价
 	UnitPrice              float64                          // 每平单价
+	CityName               string                           // 城市名称
 	CommunityName          string                           // 小区名称
 	AreaName               string                           // 所在区域
 	BaseInfo               ErshoufangBaseInfo               // 二手房基本信息

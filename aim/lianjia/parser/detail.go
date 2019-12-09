@@ -31,12 +31,13 @@ var (
 )
 
 // ParseDetail解析HTTP响应内容二手房详情页
-func ParseDetail(contents []byte, title string) engine.ParseResult {
+func ParseDetail(contents []byte, title, cityName string) engine.ParseResult {
 	ershoufang, err := parseHouseBasicInfo(&contents, title)
 	if err != nil {
 		panic(err)
 	}
 	ershoufang.Title = title
+	ershoufang.CityName = cityName
 	ershoufang.CommunityName = parseHouseFields(&contents, communityNameRe)
 	ershoufang.AreaName = parseHouseFields(&contents, areaNameRe)
 	ershoufang.Price = helper.MustPrice(parseHouseFields(&contents, priceRe))
