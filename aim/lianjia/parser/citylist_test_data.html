@@ -1,0 +1,819 @@
+
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta http-equiv="Cache-Control" content="no-transform" /><meta name="applicable-device" content="pc">
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="/favicon.ico" type="image/x-icon" rel=icon><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"><link rel="stylesheet" href="https://s1.ljcdn.com/feroot/pc/asset/common.css?_v=20191203150847">
+    <link rel="stylesheet" href="https://s1.ljcdn.com/feroot/pc/asset/main.css?_v=20191203150847">
+    <link rel="stylesheet" href="https://s1.ljcdn.com/feroot/pc/asset/city/index.css?_v=20191203150847">
+    <style type="text/css">
+        .lianjia-link-box .fl{
+            width: 85%;
+        }
+    </style>
+    <!--[if lt IE 9]><script type="text/javascript" src="https://s1.ljcdn.com/feroot/dep/common-require/html5.js?_v=20191203150847"></script><![endif]-->
+    <script>
+        function RESIZEIMG(b,k,l,m){var c=b.parentNode;var d=parseInt(c.offsetWidth)||k;var e=parseInt(c.offsetHeight)||l;var f=d/e;var g=b.naturalWidth||b.width;var h=b.naturalHeight||b.height;var i=g/h;var j="width";if(f<i){j="height";try{b.style["left"]="-"+parseInt(Math.abs((d-(g*e/h))/2))+"px"}catch(e){}}else if(m){try{b.style["top"]="-"+parseInt(Math.abs((e-(h*d/g))/2))+"px"}catch(e){}};b.style[j]="100%";};
+    </script>
+    <script>ljConf = {city_abbr: 'bj',city_name: '北京',channel: 'city',page: 'city_index',feroot: '//s1.ljcdn.com/',pageConfig: {"ajaxroot":"\/\/ajax.api.lianjia.com\/","apiroot":"http:\/\/newhouseapi.fang.lianjia.com\/","imAppid":"LIANJIA_WEB_20160624","imAppkey":"6dfdcee27d78b1107fceeca55d80b7bd"}};</script><!--反爬虫--><script>window['__abbaidu_2011_subidgetf'] = function () {return 100000;};window['__abbaidu_2011_cb'] = function (responseData) {var res = JSON.stringify({ t: responseData, r: location.href, os: 'web', v: '0.1' });res = btoa ? btoa(res) : res;document.cookie = 'srcid=' + res + ';path=/;';};</script><script type="application/javascript" src="https://dlswbr.baidu.com/heicha/mw/abclite-2011-s2.js"></script><script src="//s1.ljcdn.com/link-static/resource/plat_pc/login/js/1.2.4/pcLogin.js"></script></head><body><script>
+    __STAT_LJ_CONF = {
+        params: {
+            ljweb_group: ['SEARCH','BIGDATA_PC'],
+            ljweb_id: '',
+            ljweb_mod: '',
+            ljweb_bl: '',
+            ljweb_el: '',
+            ljweb_index: '',
+            ljweb_value: '',
+            ljweb_url: '',
+            ljweb_ljref: (document.cookie.match(/(?:^| )ljref=([^;]*)(?:;|$)/) || ['',''])[1],
+            ljweb_sample: (document.cookie.match(/(?:^| )sample_traffic_test=([^;]*)(?:;|$)/) || ['',''])[1],
+            ljweb_ref: document.referrer,
+            ljweb_cid: '',
+            ljweb_channel: 'city',
+            ljweb_page: 'city_index'
+        }
+    };
+
+
+
+    var UT = {
+        send: function() {
+
+        }
+    };
+    var LjUserTrack = {
+        log: [],
+        initInterval: false,
+        intervalLog: function() {
+            setTimeout(function() {
+                if(window.$ULOG && $ULOG.send) {
+                    for(var i = 0, l = LjUserTrack.log.length; i < l; i++) {
+                        LjUserTrack.__send(LjUserTrack.log[i]);
+                    }
+
+                    for(var m = 0, n = LjUserTrack.logIds.length; m < n; m++) {
+                        LjUserTrack.__sendId(LjUserTrack.logIds[m]);
+                    }
+                    for(var j = 0, k = LjUserTrack.logDatas.length; j < k; j++) {
+                        LjUserTrack.__sendData(LjUserTrack.logDatas[j].id, LjUserTrack.logDatas[j].data);
+                    }
+                } else {
+                    LjUserTrack.intervalLog();
+                }
+            }, 16.7);
+        },
+        _start_time: +new Date,
+        logDatas: [],
+        __sendData: function(id, data) {
+            if(id && (typeof(data) == 'object')){
+                data.pid = (window.__UDL_CONFIG && window.__UDL_CONFIG.pid && window.__UDL_CONFIG.pid)||"lianjiaweb";
+                data.key = window.location.href;
+                window.$ULOG && $ULOG.send(id, data);
+            }
+        },
+        sendData: function(id, data) {
+            if(window.$ULOG && $ULOG.send) {
+                LjUserTrack.__sendData(id, data);
+            } else {
+                LjUserTrack.logDatas.push({id: id, data: data});
+
+                LjUserTrack.initInterval || (LjUserTrack.initInterval = true, LjUserTrack.intervalLog());
+
+            }
+        },
+        __send: function(data) {
+            var evt_id = data.evt_id || '10043';
+            if('evt_id' in data) {
+                delete data.evt_id;
+            }
+
+            window.$ULOG && $ULOG.send(evt_id, {
+                "pid": (window.__UDL_CONFIG && window.__UDL_CONFIG.pid && window.__UDL_CONFIG.pid)||"lianjiaweb",
+                "key": window.location.href,
+                "action": $.extend(__ocpc ? {'ad_loginurl': __ocpc.getValue()} : {}, data)
+            });
+        },
+        logIds: [],
+        __sendId: function(id) {
+            id && window.$ULOG && $ULOG.send(id, {
+                "pid": (window.__UDL_CONFIG && window.__UDL_CONFIG.pid && window.__UDL_CONFIG.pid)||"lianjiaweb",
+                "key": window.location.href
+            });
+        },
+        sendId: function(id) {
+            if(window.$ULOG && $ULOG.send) {
+                LjUserTrack.__sendId(id);
+            } else {
+                LjUserTrack.logIds.push(id);
+
+                LjUserTrack.initInterval || (LjUserTrack.initInterval = true, LjUserTrack.intervalLog());
+
+            }
+        },
+        send: function(data, el, config) {
+
+            var utConf = __STAT_LJ_CONF;
+            var params = config || utConf.params,
+                win = window,
+                j;
+
+            data.groupIndex = data.ljweb_group || 0;
+
+            if (params) {
+                for (var d in params) {
+                    if(params[d] !== j && data[d] === j) {
+                        data[d] = params[d];
+                    }
+                }
+            }
+
+            if(el) {
+                this.checkClick(el, data);
+            }
+
+            data.ljweb_group = params['ljweb_group'][data.groupIndex || 0];
+
+            delete data.groupIndex;
+
+            if(data.typ) {
+                data.ljweb_bl = (data.ljweb_bl || '') + '_' + data.typ;
+                delete data.typ;
+            }
+
+            if(window.$ULOG && $ULOG.send) {
+                LjUserTrack.__send(data);
+            } else {
+                LjUserTrack.log.push(data);
+
+                LjUserTrack.initInterval || (LjUserTrack.initInterval = true, LjUserTrack.intervalLog());
+
+            }
+
+        },
+        checkClick: function(el, data) {
+
+            var TAG_LINK = 'A';
+            var href = '';
+            var elParent = null;
+
+            href = (el.tagName.toUpperCase() === TAG_LINK ? el.getAttribute("href", 2) : '');
+            if(!href && (elParent = el.parentNode) && elParent.nodeType === 1) {
+                href = (elParent.tagName.toUpperCase() === TAG_LINK ? elParent.getAttribute("href", 2) : '');
+            }
+
+            if(href) {
+                data.ljweb_url = href;
+            } else {
+                data.ljweb_url = data.ljweb_url
+                    || el.getAttribute("data-log_url")
+                    || (elParent=el.parentNode||el).getAttribute("data-log_url")
+                    || (
+                        (elParent=elParent.parentNode||elParent)
+                        && (elParent.nodeType === 1)
+                        && elParent.getAttribute("data-log_url")
+                    )
+                    || "";
+            }
+
+            this.attr(el, data);
+
+        },
+        path: function() {
+
+        },
+        attr: function(el, data) {
+            var modId = el.getAttribute("log-mod");
+            var blAttr = el.getAttribute("data-bl");
+            var elAttr = el.getAttribute("data-el");
+            var InAttr = el.getAttribute("data-log_index");
+            var valAttr = el.getAttribute("data-log_value");
+            var idAttr = el.getAttribute("data-log_id");
+            var groupAttr = el.getAttribute("data-log_group");
+            var evtId     = el.getAttribute("data-log_evtid");
+
+            data.ljweb_bl = data.ljweb_bl || blAttr || '';
+            data.ljweb_el = data.ljweb_el || elAttr || '';
+            data.ljweb_index = data.ljweb_index || InAttr || '';
+            data.ljweb_value = data.ljweb_value || valAttr || '';
+            data.ljweb_id = data.ljweb_id || idAttr || '';
+            data.groupIndex = data.groupIndex || groupAttr || 0;
+            data.evt_id      = data.evt_id || evtId || '';
+
+            if (!modId) {
+                if (el.parentNode && el.parentNode.nodeType === 1 && el.parentNode.tagName.toUpperCase() !== 'BODY') {
+                    this.attr(el.parentNode, data);
+                }
+            } else {
+                data.ljweb_mod = modId;
+            }
+        }
+    };
+
+    ;;(function() {
+        var isW3c = !!document.addEventListener;
+
+        LjUserTrack.send({
+            ljweb_mod: 'pv',
+            ljweb_group: 1
+        });
+
+        /*window[isW3c ? 'addEventListener' : 'attachEvent'](
+            (isW3c ? '': 'on') + 'beforeunload',
+            function(e) {
+                var _end_time = +new Date;
+                UT.send({type: 'show', subtype: 'stay', time: (_end_time-UT._start_time)/1000});
+            },
+            false);*/
+    })();
+
+
+
+
+
+</script>
+
+
+<!-- <div class="main-top">
+    <div class="con">
+        <span class="logo"><a href=""></a></span>
+    </div>
+</div> -->
+<div class="wrapper">
+    <div class="city_search">
+        <div class="con">
+            <span class="logo"><a href="//bj.lianjia.com"></a></span>
+        </div>
+        <div class="search_wrapper">
+            <input type="text" placeholder="搜索城市" class="sug-input">
+            <a class="btn btn_blue search_btn">搜索</a>
+            <i class="icon icon_search"></i>
+            <div id="city_sug"></div>
+        </div>
+    </div>
+</div>
+<div class="city_selection_section">
+    <div>
+        <div class="city_recommend c_b">
+            <div class="city_recommend_tit">
+                热门城市
+            </div>
+            <ul class="city_recommend_list">
+                <li><a href="https://bj.lianjia.com/">北京</a></li>
+                <li><a href="https://sh.lianjia.com/">上海</a></li>
+                <li><a href="https://sz.lianjia.com/">深圳</a></li>
+            </ul>
+        </div>
+        <div class="city_recommend c_b">
+            <div class="city_recommend_tit">
+                城市选择
+            </div>
+            <div class="select">
+                <div class="chang-city">
+                    <span>省份</span>
+                    <i class="icon"></i>
+                </div>
+                <div class="select_options_frame" id="provincesItem"></div>
+            </div>
+            <div class="select">
+                <div class="chang-city">
+                    <span>城市</span>
+                    <i class="icon"></i>
+                </div>
+                <div class="select_options_frame" id="cityItem"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="city_recommend">
+        <div class="city-item VIEWDATA">
+            <!-- <div class="city_recommend_tit city_recommend_tit_long c_b">
+                按照省份首字母选择
+            </div> -->
+            <div class="city_list_section">
+                <ul class="city_list_ul">
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>A</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">安徽</div>
+                                <ul>
+                                    <li><a href="https://aq.lianjia.com/">安庆</a></li>
+                                    <li><a href="https://cz.fang.lianjia.com/">滁州</a></li>
+                                    <li><a href="https://hf.lianjia.com/">合肥</a></li>
+                                    <li><a href="https://mas.lianjia.com/">马鞍山</a></li>
+                                    <li><a href="https://wuhu.lianjia.com/">芜湖</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>B</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">北京</div>
+                                <ul>
+                                    <li><a href="https://bj.lianjia.com/">北京</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>C</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">重庆</div>
+                                <ul>
+                                    <li><a href="https://cq.lianjia.com/">重庆</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>F</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">福建</div>
+                                <ul>
+                                    <li><a href="https://fz.lianjia.com/">福州</a></li>
+                                    <li><a href="https://quanzhou.lianjia.com/">泉州</a></li>
+                                    <li><a href="https://xm.lianjia.com/">厦门</a></li>
+                                    <li><a href="https://zhangzhou.lianjia.com/">漳州</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>G</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">广东</div>
+                                <ul>
+                                    <li><a href="https://dg.lianjia.com/">东莞</a></li>
+                                    <li><a href="https://fs.lianjia.com/">佛山</a></li>
+                                    <li><a href="https://gz.lianjia.com/">广州</a></li>
+                                    <li><a href="https://hui.lianjia.com/">惠州</a></li>
+                                    <li><a href="https://jiangmen.lianjia.com/">江门</a></li>
+                                    <li><a href="https://qy.lianjia.com/">清远</a></li>
+                                    <li><a href="https://sz.lianjia.com/">深圳</a></li>
+                                    <li><a href="https://zh.lianjia.com/">珠海</a></li>
+                                    <li><a href="https://zhanjiang.lianjia.com/">湛江</a></li>
+                                    <li><a href="https://zs.lianjia.com/">中山</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">贵州</div>
+                                <ul>
+                                    <li><a href="https://gy.lianjia.com/">贵阳</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">广西</div>
+                                <ul>
+                                    <li><a href="https://bh.lianjia.com/">北海</a></li>
+                                    <li><a href="https://fcg.lianjia.com/">防城港</a></li>
+                                    <li><a href="https://gl.lianjia.com/">桂林</a></li>
+                                    <li><a href="https://liuzhou.lianjia.com/">柳州</a></li>
+                                    <li><a href="https://nn.lianjia.com/">南宁</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">甘肃</div>
+                                <ul>
+                                    <li><a href="https://lz.lianjia.com/">兰州</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>H</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">湖北</div>
+                                <ul>
+                                    <li><a href="https://ez.lianjia.com/">鄂州</a></li>
+                                    <li><a href="https://huangshi.lianjia.com/">黄石</a></li>
+                                    <li><a href="https://wh.lianjia.com/">武汉</a></li>
+                                    <li><a href="https://xy.lianjia.com/">襄阳</a></li>
+                                    <li><a href="https://yichang.lianjia.com/">宜昌</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">湖南</div>
+                                <ul>
+                                    <li><a href="https://cs.lianjia.com/">长沙</a></li>
+                                    <li><a href="https://changde.lianjia.com/">常德</a></li>
+                                    <li><a href="https://yy.lianjia.com/">岳阳</a></li>
+                                    <li><a href="https://zhuzhou.lianjia.com/">株洲</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">河北</div>
+                                <ul>
+                                    <li><a href="https://bd.lianjia.com/">保定</a></li>
+                                    <li><a href="https://lf.lianjia.com/">廊坊</a></li>
+                                    <li><a href="https://qhd.fang.lianjia.com/">秦皇岛</a></li>
+                                    <li><a href="https://sjz.lianjia.com/">石家庄</a></li>
+                                    <li><a href="https://ts.lianjia.com/">唐山</a></li>
+                                    <li><a href="https://zjk.lianjia.com/">张家口</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">海南</div>
+                                <ul>
+                                    <li><a href="https://bt.fang.lianjia.com/">保亭</a></li>
+                                    <li><a href="https://cm.fang.lianjia.com/">澄迈</a></li>
+                                    <li><a href="https://dz.fang.lianjia.com/">儋州</a></li>
+                                    <li><a href="https://hk.lianjia.com/">海口</a></li>
+                                    <li><a href="https://lg.fang.lianjia.com/">临高</a></li>
+                                    <li><a href="https://ld.fang.lianjia.com/">乐东</a></li>
+                                    <li><a href="https://ls.fang.lianjia.com/">陵水</a></li>
+                                    <li><a href="https://qh.fang.lianjia.com/">琼海</a></li>
+                                    <li><a href="https://san.lianjia.com/">三亚</a></li>
+                                    <li><a href="https://wzs.fang.lianjia.com/">五指山</a></li>
+                                    <li><a href="https://wc.fang.lianjia.com/">文昌</a></li>
+                                    <li><a href="https://wn.fang.lianjia.com/">万宁</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">河南</div>
+                                <ul>
+                                    <li><a href="https://kf.lianjia.com/">开封</a></li>
+                                    <li><a href="https://luoyang.lianjia.com/">洛阳</a></li>
+                                    <li><a href="https://xinxiang.lianjia.com/">新乡</a></li>
+                                    <li><a href="https://xc.lianjia.com/">许昌</a></li>
+                                    <li><a href="https://zz.lianjia.com/">郑州</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">黑龙江</div>
+                                <ul>
+                                    <li><a href="https://hrb.lianjia.com/">哈尔滨</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>J</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">江苏</div>
+                                <ul>
+                                    <li><a href="https://changzhou.lianjia.com/">常州</a></li>
+                                    <li><a href="https://haimen.lianjia.com/">海门</a></li>
+                                    <li><a href="https://ha.lianjia.com/">淮安</a></li>
+                                    <li><a href="https://jy.lianjia.com/">江阴</a></li>
+                                    <li><a href="https://ks.lianjia.com/">昆山</a></li>
+                                    <li><a href="https://nj.lianjia.com/">南京</a></li>
+                                    <li><a href="https://nt.lianjia.com/">南通</a></li>
+                                    <li><a href="https://su.lianjia.com/">苏州</a></li>
+                                    <li><a href="https://wx.lianjia.com/">无锡</a></li>
+                                    <li><a href="https://xz.lianjia.com/">徐州</a></li>
+                                    <li><a href="https://yc.lianjia.com/">盐城</a></li>
+                                    <li><a href="https://zj.lianjia.com/">镇江</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">吉林</div>
+                                <ul>
+                                    <li><a href="https://cc.lianjia.com/">长春</a></li>
+                                    <li><a href="https://jl.lianjia.com/">吉林</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">江西</div>
+                                <ul>
+                                    <li><a href="https://ganzhou.lianjia.com/">赣州</a></li>
+                                    <li><a href="https://jiujiang.lianjia.com/">九江</a></li>
+                                    <li><a href="https://jian.lianjia.com/">吉安</a></li>
+                                    <li><a href="https://nc.lianjia.com/">南昌</a></li>
+                                    <li><a href="https://sr.lianjia.com/">上饶</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>L</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">辽宁</div>
+                                <ul>
+                                    <li><a href="https://dl.lianjia.com/">大连</a></li>
+                                    <li><a href="https://dd.lianjia.com/">丹东</a></li>
+                                    <li><a href="https://sy.lianjia.com/">沈阳</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>N</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">内蒙古</div>
+                                <ul>
+                                    <li><a href="https://hhht.lianjia.com/">呼和浩特</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">宁夏</div>
+                                <ul>
+                                    <li><a href="https://yinchuan.lianjia.com/">银川</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>S</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">上海</div>
+                                <ul>
+                                    <li><a href="https://sh.lianjia.com/">上海</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">四川</div>
+                                <ul>
+                                    <li><a href="https://cd.lianjia.com/">成都</a></li>
+                                    <li><a href="https://dy.fang.lianjia.com/">德阳</a></li>
+                                    <li><a href="https://dazhou.lianjia.com/">达州</a></li>
+                                    <li><a href="https://leshan.fang.lianjia.com/">乐山</a></li>
+                                    <li><a href="https://liangshan.lianjia.com/">凉山</a></li>
+                                    <li><a href="https://mianyang.lianjia.com/">绵阳</a></li>
+                                    <li><a href="https://ms.fang.lianjia.com/">眉山</a></li>
+                                    <li><a href="https://nanchong.lianjia.com/">南充</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">山东</div>
+                                <ul>
+                                    <li><a href="https://jn.lianjia.com/">济南</a></li>
+                                    <li><a href="https://linyi.lianjia.com/">临沂</a></li>
+                                    <li><a href="https://qd.lianjia.com/">青岛</a></li>
+                                    <li><a href="https://ta.lianjia.com/">泰安</a></li>
+                                    <li><a href="https://wf.lianjia.com/">潍坊</a></li>
+                                    <li><a href="https://weihai.lianjia.com/">威海</a></li>
+                                    <li><a href="https://yt.lianjia.com/">烟台</a></li>
+                                    <li><a href="https://zb.lianjia.com/">淄博</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">陕西</div>
+                                <ul>
+                                    <li><a href="https://baoji.lianjia.com/">宝鸡</a></li>
+                                    <li><a href="https://hanzhong.lianjia.com/">汉中</a></li>
+                                    <li><a href="https://xa.lianjia.com/">西安</a></li>
+                                    <li><a href="https://xianyang.lianjia.com/">咸阳</a></li>
+                                </ul>
+                            </div>
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">山西</div>
+                                <ul>
+                                    <li><a href="https://jz.lianjia.com/">晋中</a></li>
+                                    <li><a href="https://ty.lianjia.com/">太原</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>T</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">天津</div>
+                                <ul>
+                                    <li><a href="https://tj.lianjia.com/">天津</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>Y</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">云南</div>
+                                <ul>
+                                    <li><a href="https://dali.lianjia.com/">大理</a></li>
+                                    <li><a href="https://km.lianjia.com/">昆明</a></li>
+                                    <li><a href="https://xsbn.fang.lianjia.com/">西双版纳</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="city_list_li city_list_li_selected">
+                        <div class="city_firstletter">
+                            <span>Z</span>
+                            <i></i>
+                        </div>
+                        <div class="city_list">
+                            <div class="city_province">
+                                <i></i>
+                                <div class="city_list_tit c_b">浙江</div>
+                                <ul>
+                                    <li><a href="https://hz.lianjia.com/">杭州</a></li>
+                                    <li><a href="https://huzhou.lianjia.com/">湖州</a></li>
+                                    <li><a href="https://jx.lianjia.com/">嘉兴</a></li>
+                                    <li><a href="https://jh.lianjia.com/">金华</a></li>
+                                    <li><a href="https://nb.lianjia.com/">宁波</a></li>
+                                    <li><a href="https://sx.lianjia.com/">绍兴</a></li>
+                                    <li><a href="https://taizhou.lianjia.com/">台州</a></li>
+                                    <li><a href="https://wz.lianjia.com/">温州</a></li>
+                                    <li><a href="https://yw.lianjia.com/">义乌</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="top-cities clear">
+
+</div>
+
+<script type="text/template" id="sugTpl">
+    <ul class="city_sug">
+        <%if(list.length > 0){%>
+        <%for(var i = 0; i < list.length; i++){%>
+        <li><a href="<%=list[i].url%>" data-log_index="<%=i%>"><%=list[i].name%></a></li>
+        <%}%>
+        <%}else{%>
+        <li><span>抱歉，未能找到相关城市</span></li>
+        <%}%>
+    </ul>
+</script>
+<script type="text/template" id="provincesItemTpl">
+    <ul class="select_options">
+        <%for(i in list){%>
+        <li><%=i%></li>
+        <%}%>
+    </ul>
+</script>
+<script type="text/template" id="cityItemTpl">
+    <ul class="select_options">
+        <%for(i in list){%>
+        <li><a href="<%=list[i].url%>"><%=list[i].name%></a></li>
+        <%}%>
+    </ul>
+</script>
+
+
+<div class="footer"><div class="wrapper"><div class="f-title"><div class="fl"><ul><li><a href="https://bj.lianjia.com/about/aboutlianjia/" rel="nofollow" target="_blank">关于链家</a></li><li><a href="https://bj.lianjia.com/about/contactus/" rel="nofollow" target="_blank">联系我们</a></li><li><a href="https://job.lianjia.com/" rel="nofollow" target="_blank">加入我们</a></li><li><a href="https://www.lianjia.com/privacy/" rel="nofollow" target="_blank">隐私声明</a></li><li><a href="https://bj.lianjia.com/sitemap/" target="_blank">网站地图</a></li><li><a href="https://page.lianjia.com/subject/youlian.html" rel="nofollow" target="_blank">友情链接</a></li></ul></div><div class="fr">服务热线 10109666</div></div><div class="lianjia-link-box"><div class="fl"><div class="tab"><span  class="hover">城市二手房</span><span >房产资讯</span><span >城区二手房</span><span >城区租房</span><span >城区小区</span><span >热门小区</span><span >热门问答</span><span >热门百科</span></div><div class="link-list"><div><dd><a target="_blank" href="https://yinchuan.lianjia.com/">银川房产网</a><a target="_blank" href="https://jiangmen.lianjia.com/">江门房产网</a><a target="_blank" href="https://mianyang.lianjia.com/">绵阳房产网</a><a target="_blank" href="https://bh.lianjia.com/">北海房产网</a><a target="_blank" href="https://hhht.lianjia.com/">呼和浩特房产网</a><a target="_blank" href="https://cd.lianjia.com/">成都房产网</a><a target="_blank" href="https://hz.lianjia.com/">杭州房产网</a><a target="_blank" href="https://ez.lianjia.com/">鄂州房产网</a><a target="_blank" href="https://linyi.lianjia.com/">临沂房产网</a><a target="_blank" href="https://jian.lianjia.com/">吉安房产网</a><a target="_blank" href="https://cq.lianjia.com/">重庆房产网</a><a target="_blank" href="https://ty.lianjia.com/">太原房产网</a><a target="_blank" href="https://jn.lianjia.com/">济南房产网</a><a target="_blank" href="https://jiujiang.lianjia.com/">九江房产网</a><a target="_blank" href="https://changzhou.lianjia.com/">常州房产网</a><a target="_blank" href="https://fz.lianjia.com/">福州房产网</a><a target="_blank" href="https://dg.lianjia.com/">东莞房产网</a><a target="_blank" href="https://qy.lianjia.com/">清远房产网</a><a target="_blank" href="https://nb.lianjia.com/">宁波房产网</a><a target="_blank" href="https://taizhou.lianjia.com/">台州房产网</a><a target="_blank" href="https://zhuzhou.lianjia.com/">株洲房产网</a><a target="_blank" href="https://liuzhou.lianjia.com/">柳州房产网</a><a target="_blank" href="https://haimen.lianjia.com/">海门房产网</a><a target="_blank" href="https://wz.lianjia.com/">温州房产网</a><a target="_blank" href="https://dazhou.lianjia.com/">达州房产网</a><a target="_blank" href="https://nj.lianjia.com/">南京房产网</a><a target="_blank" href="https://zhangzhou.lianjia.com/">漳州房产网</a><a target="_blank" href="https://xm.lianjia.com/">厦门房产网</a><a target="_blank" href="https://su.lianjia.com/">苏州房产网</a><a target="_blank" href="https://jh.lianjia.com/">金华房产网</a><a target="_blank" href="https://huangshi.lianjia.com/">黄石房产网</a><a target="_blank" href="https://wh.lianjia.com/">武汉房产网</a><a target="_blank" href="https://bd.lianjia.com/">保定房产网</a><a target="_blank" href="https://sr.lianjia.com/">上饶房产网</a><a target="_blank" href="https://yc.lianjia.com/">盐城房产网</a><a target="_blank" href="https://xianyang.lianjia.com/">咸阳房产网</a><a target="_blank" href="https://sx.lianjia.com/">绍兴房产网</a><a target="_blank" href="https://zh.lianjia.com/">珠海房产网</a><a target="_blank" href="https://zhanjiang.lianjia.com/">湛江房产网</a><a target="_blank" href="https://changde.lianjia.com/">常德房产网</a></dd></div><div><dd><a target="_blank" href="https://dl.lianjia.com/wenda/">大连房产知识</a><a target="_blank" href="https://tj.lianjia.com/wenda/">天津房产知识</a><a target="_blank" href="https://news.lianjia.com/nj/">南京房产资讯</a><a target="_blank" href="https://news.lianjia.com/nj/baike/">南京房产百科</a><a target="_blank" href="https://news.lianjia.com/cq/baike/">重庆房产百科</a><a target="_blank" href="https://news.lianjia.com/bj/">北京房产资讯</a><a target="_blank" href="https://jn.lianjia.com/wenda/">济南房产知识</a><a target="_blank" href="https://news.lianjia.com/hz/baike/">杭州房产百科</a><a target="_blank" href="https://news.lianjia.com/yt/baike/">烟台房产百科</a><a target="_blank" href="https://news.lianjia.com/yt/">烟台房产资讯</a><a target="_blank" href="https://news.lianjia.com/qd/baike/">青岛房产百科</a><a target="_blank" href="https://news.lianjia.com/sjz/">石家庄房产资讯</a><a target="_blank" href="https://news.lianjia.com/sy/">沈阳房产资讯</a><a target="_blank" href="https://nj.lianjia.com/wenda/">南京房产知识</a><a target="_blank" href="https://news.lianjia.com/bj/baike/">北京房产百科</a><a target="_blank" href="https://news.lianjia.com/xa/">西安房产资讯</a><a target="_blank" href="https://news.lianjia.com/cd/">成都房产资讯</a><a target="_blank" href="https://news.lianjia.com/wh/baike/">武汉房产百科</a><a target="_blank" href="https://gz.lianjia.com/wenda/">广州房产知识</a><a target="_blank" href="https://news.lianjia.com/cd/baike/">成都房产百科</a><a target="_blank" href="https://news.lianjia.com/sy/baike/">沈阳房产百科</a><a target="_blank" href="https://xa.lianjia.com/wenda/">西安房产知识</a><a target="_blank" href="https://news.lianjia.com/dl/">大连房产资讯</a><a target="_blank" href="https://news.lianjia.com/jn/">济南房产资讯</a><a target="_blank" href="https://news.lianjia.com/hf/baike/">合肥房产百科</a><a target="_blank" href="https://news.lianjia.com/">房产资讯</a><a target="_blank" href="https://fs.lianjia.com/wenda/">佛山房产知识</a><a target="_blank" href="https://news.lianjia.com/sz/baike/">深圳房产百科</a><a target="_blank" href="https://news.lianjia.com/dg/">东莞房产资讯</a><a target="_blank" href="https://news.lianjia.com/zz/baike/">郑州房产百科</a><a target="_blank" href="https://news.lianjia.com/jn/baike/">济南房产百科</a><a target="_blank" href="https://sz.lianjia.com/wenda/">深圳房产知识</a><a target="_blank" href="https://dg.lianjia.com/wenda/">东莞房产知识</a><a target="_blank" href="https://news.lianjia.com/cs/baike/">长沙房产百科</a><a target="_blank" href="https://news.lianjia.com/cq/">重庆房产资讯</a><a target="_blank" href="https://hz.lianjia.com/wenda/">杭州房产知识</a><a target="_blank" href="https://news.lianjia.com/cs/">长沙房产资讯</a><a target="_blank" href="https://news.lianjia.com/gz/">广州房产资讯</a><a target="_blank" href="https://news.lianjia.com/fs/">佛山房产资讯</a><a target="_blank" href="https://sh.lianjia.com/wenda/">上海房产知识</a></dd></div><div><dd><a target="_blank" href="https://bj.lianjia.com/ershoufang/changping/">昌平二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/chaoyang/">朝阳二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/dongcheng/">东城二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/daxing/">大兴二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/fangshan/">房山二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/fengtai/">丰台二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/haidian/">海淀二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/huairou/">怀柔二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/mentougou/">门头沟二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/miyun/">密云二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/pinggu/">平谷二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/shijingshan/">石景山二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/shunyi/">顺义二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/tongzhou/">通州二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/xicheng/">西城二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/yanqing/">延庆二手房</a><a target="_blank" href="https://bj.lianjia.com/ershoufang/yizhuangkaifaqu/">亦庄开发区二手房</a></dd></div><div><dd><a target="_blank" href="https://bj.lianjia.com/zufang/changping/">昌平租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/chaoyang/">朝阳租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/dongcheng/">东城租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/daxing/">大兴租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/fangshan/">房山租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/fengtai/">丰台租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/haidian/">海淀租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/huairou/">怀柔租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/mentougou/">门头沟租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/miyun/">密云租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/pinggu/">平谷租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/shijingshan/">石景山租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/shunyi/">顺义租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/tongzhou/">通州租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/xicheng/">西城租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/yanqing/">延庆租房</a><a target="_blank" href="https://bj.lianjia.com/zufang/yizhuangkaifaqu/">亦庄开发区租房</a></dd></div><div><dd><a target="_blank" href="https://bj.lianjia.com/xiaoqu/changping/">昌平小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/chaoyang/">朝阳小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/dongcheng/">东城小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/daxing/">大兴小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/fangshan/">房山小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/fengtai/">丰台小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/haidian/">海淀小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/huairou/">怀柔小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/mentougou/">门头沟小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/miyun/">密云小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/pinggu/">平谷小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/shijingshan/">石景山小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/shunyi/">顺义小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/tongzhou/">通州小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/xicheng/">西城小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/yanqing/">延庆小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/yizhuangkaifaqu/">亦庄开发区小区</a></dd></div><div><dd><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376555/">橙色年代</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381981/">怡清园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027382321/">知春里</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027377741/">乐成国际</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381973/">洋桥西里</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111046319521/">建邦华庭西区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381804/">雍景四季</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027378740/">潘家园小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376862/">东方银座</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027379175/">上东上层</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376401/">晨光家园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381998/">怡然家园6号院</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027378340/">米兰花园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111052073923/">门头沟月季园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376988/">建邦华府</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027374738/">港馨家园东区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027377325/">嘉润花园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027382559/">左家庄东里</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027377184/">金惠园三里</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111057015877/">园博嘉园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111062903682/">合景领峰</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027379036/">瑞丽江畔</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027378177/">丽园C区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027378838/">旗舰凯旋二三期</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027375125/">红联北村</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111043315856/">本家润园三期</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027380687/">兴都苑</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027378904/">亲亲我家</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027374037/">大峪南路</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027380476/">曙光花园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381093/">新桥家园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376511/">诚品建筑</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111043058172/">江南山水</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027375191/">和平家园小区</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027380501/">望馨花园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027374463/">方舟苑二期</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027375772/">北店嘉园</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027376986/">建邦枫景</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/1111027381754/">玉海园五里</a><a target="_blank" href="https://bj.lianjia.com/xiaoqu/117800835289894/">首开国风美唐三期</a></dd></div><div><dd><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1001/">房价行情</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1002/">购房建议</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1003/">购房资质</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1004/">买房风险</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1005/">二手房</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1006/">新房</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b1007/">海外买房</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b2001/">税费计算</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b2002/">认购签约</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b2003/">资金监管</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b2004/">过户流程</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b2005/">入住交接</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b3001/">房屋估价</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b3002/">卖房流程</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b3003/">出售方案</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b3004/">业主风险</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b3005/">卖旧买新</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5001/">贷款利率</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5002/">首付月供</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5003/">贷款流程</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5004/">住房公积金</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5005/">商业贷款</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5006/">融资借款</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b5007/">金融方案</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b6001/">房产政策</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b6002/">法律纠纷</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b6003/">保障住房</a><a target="_blank" href="https://bj.lianjia.com/wenda/liebiao/b6004/">其他</a></dd></div><div><dd><a target="_blank" href="https://news.lianjia.com/bj/baike/0033/">房产政策</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0035/">购房建议</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0036/">购房资质</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0037/">房屋贷款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0039/">保障住房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0040/">产权/变更</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0041/">法律纠纷</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0042/">房屋装修</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0044/">准备买房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0045/">看房/选房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0046/">签约/定房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0047/">全款/贷款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0048/">缴税/过户</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0049/">入住/交接</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0050/">买房风险</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0051/">准备买房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0052/">看房/选房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0053/">认购新房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0054/">签约/定房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0055/">全款/贷款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0056/">收房/验房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0057/">装修/入住</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0058/">退房/维权</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0059/">各国概况</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0060/">计划买房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0061/">签约定房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0062/">银行贷款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0063/">交易过户</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0064/">房屋代理</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0066/">准备卖房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0067/">产权核验</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0068/">收定金/签约</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0069/">分步收款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0070/">缴税/过户</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0071/">交房须知</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0072/">卖房风险</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0073/">准备换房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0074/">换房方案</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0077/">缴税/过户</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0078/">交房/收房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/0079/">换房风险</a><a target="_blank" href="https://news.lianjia.com/bj/baike/00779/">找房看房</a><a target="_blank" href="https://news.lianjia.com/bj/baike/00780/">签约付款</a><a target="_blank" href="https://news.lianjia.com/bj/baike/00781/">物业交割</a><a target="_blank" href="https://news.lianjia.com/bj/baike/00782/">租房纠纷</a><a target="_blank" href="https://news.lianjia.com/bj/baike/00783/">我是房东</a></dd></div></div></div><div class="fr"><img src="https://s1.ljcdn.com/feroot/pc/asset/img/home/erweima.png?_v=20191203150847"></div><div class="clear"></div></div><div class="bottom"><div class="copyright fl">链家网（北京）科技有限公司 | 网络经营许可证 京ICP备16057509号-2<br>© Copyright©2010-2019 链家网Lianjia.com版权所有<br>违法和不良信息举报电话：010-86440676 违法和不良信息举报邮箱：jubaoyouxiang@lianjia.com<div style="width:300px;color: #888c8e;font-size: 12px;line-height: 20px;margin: 0 auto;text-align: center;"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802024019" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="https://s1.ljcdn.com/feroot/pc/asset/img/home/beian.png?_v=20191203150847"" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px;color: #888c8e;">京公网安备 11010802024019号</p></a></div></div><div class="hot-frauds fr"><label>热门商圈<i></i></label><div class="frauds-list"><i></i><div class="tab"><span  class="hover">A</span><span >B</span><span >C</span><span >D</span><span >E</span><span >F</span><span >G</span><span >H</span><span >J</span><span >K</span><span >L</span><span >M</span><span >N</span><span >P</span><span >Q</span><span >S</span><span >T</span><span >W</span><span >X</span><span >Y</span><span >Z</span></div><div class="link-list link-footer"><div><a href="https://bj.lianjia.com/ershoufang/andingmen/" target="_blank">安定门二手房</a><a href="https://bj.lianjia.com/ershoufang/anzhen1/" target="_blank">安贞二手房</a><a href="https://bj.lianjia.com/ershoufang/aolinpikegongyuan11/" target="_blank">奥林匹克公园二手房</a><a href="https://bj.lianjia.com/ershoufang/anningzhuang1/" target="_blank">安宁庄二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/beitaipingzhuang/" target="_blank">北太平庄二手房</a><a href="https://bj.lianjia.com/ershoufang/baizhifang1/" target="_blank">白纸坊二手房</a><a href="https://bj.lianjia.com/ershoufang/bajiao1/" target="_blank">八角二手房</a><a href="https://bj.lianjia.com/ershoufang/baiziwan/" target="_blank">百子湾二手房</a><a href="https://bj.lianjia.com/ershoufang/baishiqiao1/" target="_blank">白石桥二手房</a><a href="https://bj.lianjia.com/ershoufang/beiqijia/" target="_blank">北七家二手房</a><a href="https://bj.lianjia.com/ershoufang/beigongda/" target="_blank">北工大二手房</a><a href="https://bj.lianjia.com/ershoufang/beidadi/" target="_blank">北大地二手房</a><a href="https://bj.lianjia.com/ershoufang/beiguan/" target="_blank">北关二手房</a><a href="https://bj.lianjia.com/ershoufang/beiyuan2/" target="_blank">北苑二手房</a><a href="https://bj.lianjia.com/ershoufang/beijingnanzhan1/" target="_blank">北京南站二手房</a><a href="https://bj.lianjia.com/ershoufang/binhexiqu1/" target="_blank">滨河西区二手房</a><a href="https://bj.lianjia.com/ershoufang/baishanzhen/" target="_blank">百善镇二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/chaoyang/" target="_blank">朝阳二手房</a><a href="https://bj.lianjia.com/ershoufang/changping/" target="_blank">昌平二手房</a><a href="https://bj.lianjia.com/ershoufang/chegongzhuang1/" target="_blank">车公庄二手房</a><a href="https://bj.lianjia.com/ershoufang/chongwenmen/" target="_blank">崇文门二手房</a><a href="https://bj.lianjia.com/ershoufang/changchunjie/" target="_blank">长椿街二手房</a><a href="https://bj.lianjia.com/ershoufang/caihuying/" target="_blank">菜户营二手房</a><a href="https://bj.lianjia.com/ershoufang/chaoqing/" target="_blank">朝青二手房</a><a href="https://bj.lianjia.com/ershoufang/cbd/" target="_blank">CBD二手房</a><a href="https://bj.lianjia.com/ershoufang/chaoyanggongyuan/" target="_blank">朝阳公园二手房</a><a href="https://bj.lianjia.com/ershoufang/changwa/" target="_blank">厂洼二手房</a><a href="https://bj.lianjia.com/ershoufang/changying/" target="_blank">常营二手房</a><a href="https://bj.lianjia.com/ershoufang/chengshousi1/" target="_blank">成寿寺二手房</a><a href="https://bj.lianjia.com/ershoufang/caoqiao/" target="_blank">草桥二手房</a><a href="https://bj.lianjia.com/ershoufang/changpingqita1/" target="_blank">昌平其它二手房</a><a href="https://bj.lianjia.com/ershoufang/chaoyangmennei1/" target="_blank">朝阳门内二手房</a><a href="https://bj.lianjia.com/ershoufang/chaoyangmenwai1/" target="_blank">朝阳门外二手房</a><a href="https://bj.lianjia.com/ershoufang/changyang1/" target="_blank">长阳二手房</a><a href="https://bj.lianjia.com/ershoufang/chengzi/" target="_blank">城子二手房</a><a href="https://bj.lianjia.com/ershoufang/chengguan/" target="_blank">城关二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/dongcheng/" target="_blank">东城二手房</a><a href="https://bj.lianjia.com/ershoufang/daxing/" target="_blank">大兴二手房</a><a href="https://bj.lianjia.com/ershoufang/dinghuisi/" target="_blank">定慧寺二手房</a><a href="https://bj.lianjia.com/ershoufang/dongzhimen/" target="_blank">东直门二手房</a><a href="https://bj.lianjia.com/ershoufang/dongdan/" target="_blank">东单二手房</a><a href="https://bj.lianjia.com/ershoufang/deshengmen/" target="_blank">德胜门二手房</a><a href="https://bj.lianjia.com/ershoufang/dahongmen/" target="_blank">大红门二手房</a><a href="https://bj.lianjia.com/ershoufang/dougezhuang/" target="_blank">豆各庄二手房</a><a href="https://bj.lianjia.com/ershoufang/dingfuzhuang/" target="_blank">定福庄二手房</a><a href="https://bj.lianjia.com/ershoufang/dongba/" target="_blank">东坝二手房</a><a href="https://bj.lianjia.com/ershoufang/dashanzi/" target="_blank">大山子二手房</a><a href="https://bj.lianjia.com/ershoufang/dongdaqiao/" target="_blank">东大桥二手房</a><a href="https://bj.lianjia.com/ershoufang/dawanglu/" target="_blank">大望路二手房</a><a href="https://bj.lianjia.com/ershoufang/dianmen/" target="_blank">地安门二手房</a><a href="https://bj.lianjia.com/ershoufang/donghuashi/" target="_blank">东花市二手房</a><a href="https://bj.lianjia.com/ershoufang/daxingqita11/" target="_blank">大兴其它二手房</a><a href="https://bj.lianjia.com/ershoufang/dengshikou/" target="_blank">灯市口二手房</a><a href="https://bj.lianjia.com/ershoufang/dongsi1/" target="_blank">东四二手房</a><a href="https://bj.lianjia.com/ershoufang/doudian/" target="_blank">窦店二手房</a><a href="https://bj.lianjia.com/ershoufang/dayu/" target="_blank">大峪二手房</a><a href="https://bj.lianjia.com/ershoufang/dongguan/" target="_blank">东关二手房</a><a href="https://bj.lianjia.com/ershoufang/daxingkaifaqu/" target="_blank">大兴开发区二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/erlizhuang/" target="_blank">二里庄二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/fengtai/" target="_blank">丰台二手房</a><a href="https://bj.lianjia.com/ershoufang/fangshan/" target="_blank">房山二手房</a><a href="https://bj.lianjia.com/ershoufang/fuchengmen/" target="_blank">阜成门二手房</a><a href="https://bj.lianjia.com/ershoufang/fangzhuang1/" target="_blank">方庄二手房</a><a href="https://bj.lianjia.com/ershoufang/fatou/" target="_blank">垡头二手房</a><a href="https://bj.lianjia.com/ershoufang/fangshanqita/" target="_blank">房山其它二手房</a><a href="https://bj.lianjia.com/ershoufang/fengtaiqita1/" target="_blank">丰台其它二手房</a><a href="https://bj.lianjia.com/ershoufang/fengcun/" target="_blank">冯村二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/gongzhufen/" target="_blank">公主坟二手房</a><a href="https://bj.lianjia.com/ershoufang/guanyuan/" target="_blank">官园二手房</a><a href="https://bj.lianjia.com/ershoufang/guangqumen/" target="_blank">广渠门二手房</a><a href="https://bj.lianjia.com/ershoufang/guanganmen/" target="_blank">广安门二手房</a><a href="https://bj.lianjia.com/ershoufang/gucheng/" target="_blank">古城二手房</a><a href="https://bj.lianjia.com/ershoufang/guoyuan1/" target="_blank">果园二手房</a><a href="https://bj.lianjia.com/ershoufang/guanzhuang/" target="_blank">管庄二手房</a><a href="https://bj.lianjia.com/ershoufang/ganluyuan/" target="_blank">甘露园二手房</a><a href="https://bj.lianjia.com/ershoufang/guozhan1/" target="_blank">国展二手房</a><a href="https://bj.lianjia.com/ershoufang/gongti/" target="_blank">工体二手房</a><a href="https://bj.lianjia.com/ershoufang/gaobeidian/" target="_blank">高碑店二手房</a><a href="https://bj.lianjia.com/ershoufang/ganjiakou/" target="_blank">甘家口二手房</a><a href="https://bj.lianjia.com/ershoufang/guanyinsi/" target="_blank">观音寺二手房</a><a href="https://bj.lianjia.com/ershoufang/guloudajie/" target="_blank">鼓楼大街二手房</a><a href="https://bj.lianjia.com/ershoufang/gaomidiannan/" target="_blank">高米店南二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/haidian/" target="_blank">海淀二手房</a><a href="https://bj.lianjia.com/ershoufang/huairou/" target="_blank">怀柔二手房</a><a href="https://bj.lianjia.com/ershoufang/hepingli/" target="_blank">和平里二手房</a><a href="https://bj.lianjia.com/ershoufang/huaweiqiao/" target="_blank">华威桥二手房</a><a href="https://bj.lianjia.com/ershoufang/hongmiao/" target="_blank">红庙二手房</a><a href="https://bj.lianjia.com/ershoufang/huilongguan2/" target="_blank">回龙观二手房</a><a href="https://bj.lianjia.com/ershoufang/huairouchengqu1/" target="_blank">怀柔二手房</a><a href="https://bj.lianjia.com/ershoufang/huoying/" target="_blank">霍营二手房</a><a href="https://bj.lianjia.com/ershoufang/huixinxijie/" target="_blank">惠新西街二手房</a><a href="https://bj.lianjia.com/ershoufang/huanlegu/" target="_blank">欢乐谷二手房</a><a href="https://bj.lianjia.com/ershoufang/heyi/" target="_blank">和义二手房</a><a href="https://bj.lianjia.com/ershoufang/huaxiang/" target="_blank">花乡二手房</a><a href="https://bj.lianjia.com/ershoufang/houshayu1/" target="_blank">后沙峪二手房</a><a href="https://bj.lianjia.com/ershoufang/haidianqita1/" target="_blank">海淀其它二手房</a><a href="https://bj.lianjia.com/ershoufang/huairouqita1/" target="_blank">怀柔其它二手房</a><a href="https://bj.lianjia.com/ershoufang/haidianbeibuxinqu1/" target="_blank">海淀北部新区二手房</a><a href="https://bj.lianjia.com/ershoufang/huangcunzhong/" target="_blank">黄村中二手房</a><a href="https://bj.lianjia.com/ershoufang/huangcunhuochezhan/" target="_blank">黄村火车站二手房</a><a href="https://bj.lianjia.com/ershoufang/huangcunbei/" target="_blank">黄村北二手房</a><a href="https://bj.lianjia.com/ershoufang/hancunhe1/" target="_blank">韩村河二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/junbo1/" target="_blank">军博二手房</a><a href="https://bj.lianjia.com/ershoufang/jiuxianqiao/" target="_blank">酒仙桥二手房</a><a href="https://bj.lianjia.com/ershoufang/jinsong/" target="_blank">劲松二手房</a><a href="https://bj.lianjia.com/ershoufang/jiugong1/" target="_blank">旧宫二手房</a><a href="https://bj.lianjia.com/ershoufang/jiaodaokou/" target="_blank">交道口二手房</a><a href="https://bj.lianjia.com/ershoufang/jinrongjie/" target="_blank">金融街二手房</a><a href="https://bj.lianjia.com/ershoufang/jinbaojie/" target="_blank">金宝街二手房</a><a href="https://bj.lianjia.com/ershoufang/jianguomenwai/" target="_blank">建国门外二手房</a><a href="https://bj.lianjia.com/ershoufang/jianguomennei/" target="_blank">建国门内二手房</a><a href="https://bj.lianjia.com/ershoufang/jianxiangqiao1/" target="_blank">健翔桥二手房</a><a href="https://bj.lianjia.com/ershoufang/jiukeshu12/" target="_blank">九棵树(家乐福)二手房</a><a href="https://bj.lianjia.com/ershoufang/jiaomen/" target="_blank">角门二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/kandanqiao/" target="_blank">看丹桥二手房</a><a href="https://bj.lianjia.com/ershoufang/kejiyuanqu/" target="_blank">科技园区二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/liuliqiao1/" target="_blank">六里桥二手房</a><a href="https://bj.lianjia.com/ershoufang/lugouqiao1/" target="_blank">卢沟桥二手房</a><a href="https://bj.lianjia.com/ershoufang/lugu1/" target="_blank">鲁谷二手房</a><a href="https://bj.lianjia.com/ershoufang/laoshan1/" target="_blank">老山二手房</a><a href="https://bj.lianjia.com/ershoufang/liyuan/" target="_blank">梨园二手房</a><a href="https://bj.lianjia.com/ershoufang/lishuiqiao1/" target="_blank">立水桥二手房</a><a href="https://bj.lianjia.com/ershoufang/liupukang/" target="_blank">六铺炕二手房</a><a href="https://bj.lianjia.com/ershoufang/linheli/" target="_blank">临河里二手房</a><a href="https://bj.lianjia.com/ershoufang/lize/" target="_blank">丽泽二手房</a><a href="https://bj.lianjia.com/ershoufang/liujiayao/" target="_blank">刘家窑二手房</a><a href="https://bj.lianjia.com/ershoufang/liqiao1/" target="_blank">李桥二手房</a><a href="https://bj.lianjia.com/ershoufang/luyuan/" target="_blank">潞苑二手房</a><a href="https://bj.lianjia.com/ershoufang/liangxiang/" target="_blank">良乡二手房</a><a href="https://bj.lianjia.com/ershoufang/liulihe/" target="_blank">琉璃河二手房</a><a href="https://bj.lianjia.com/ershoufang/liangmaqiao/" target="_blank">亮马桥二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/mentougou/" target="_blank">门头沟二手房</a><a href="https://bj.lianjia.com/ershoufang/miyun/" target="_blank">密云二手房</a><a href="https://bj.lianjia.com/ershoufang/maliandao1/" target="_blank">马连道二手房</a><a href="https://bj.lianjia.com/ershoufang/majiabao/" target="_blank">马家堡二手房</a><a href="https://bj.lianjia.com/ershoufang/muxiyuan1/" target="_blank">木樨园二手房</a><a href="https://bj.lianjia.com/ershoufang/mudanyuan/" target="_blank">牡丹园二手房</a><a href="https://bj.lianjia.com/ershoufang/majuqiao1/" target="_blank">马驹桥二手房</a><a href="https://bj.lianjia.com/ershoufang/malianwa/" target="_blank">马连洼二手房</a><a href="https://bj.lianjia.com/ershoufang/muxidi1/" target="_blank">木樨地二手房</a><a href="https://bj.lianjia.com/ershoufang/mapo/" target="_blank">马坡二手房</a><a href="https://bj.lianjia.com/ershoufang/mentougouqita1/" target="_blank">门头沟其它二手房</a><a href="https://bj.lianjia.com/ershoufang/miyunqita11/" target="_blank">密云其它二手房</a><a href="https://bj.lianjia.com/ershoufang/madian1/" target="_blank">马甸二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/niujie/" target="_blank">牛街二手房</a><a href="https://bj.lianjia.com/ershoufang/nanshatan1/" target="_blank">南沙滩二手房</a><a href="https://bj.lianjia.com/ershoufang/nongzhanguan/" target="_blank">农展馆二手房</a><a href="https://bj.lianjia.com/ershoufang/nankou/" target="_blank">南口二手房</a><a href="https://bj.lianjia.com/ershoufang/nanshao/" target="_blank">南邵二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/pinggu/" target="_blank">平谷二手房</a><a href="https://bj.lianjia.com/ershoufang/pingguoyuan1/" target="_blank">苹果园二手房</a><a href="https://bj.lianjia.com/ershoufang/puhuangyu/" target="_blank">蒲黄榆二手房</a><a href="https://bj.lianjia.com/ershoufang/panjiayuan1/" target="_blank">潘家园二手房</a><a href="https://bj.lianjia.com/ershoufang/pingguqita1/" target="_blank">平谷其它二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/qinghe11/" target="_blank">清河二手房</a><a href="https://bj.lianjia.com/ershoufang/qianmen/" target="_blank">前门二手房</a><a href="https://bj.lianjia.com/ershoufang/qingta1/" target="_blank">青塔二手房</a><a href="https://bj.lianjia.com/ershoufang/qiaozhuang/" target="_blank">乔庄二手房</a><a href="https://bj.lianjia.com/ershoufang/qilizhuang/" target="_blank">七里庄二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/shijingshan/" target="_blank">石景山二手房</a><a href="https://bj.lianjia.com/ershoufang/shunyi/" target="_blank">顺义二手房</a><a href="https://bj.lianjia.com/ershoufang/shijicheng/" target="_blank">世纪城二手房</a><a href="https://bj.lianjia.com/ershoufang/shangdi1/" target="_blank">上地二手房</a><a href="https://bj.lianjia.com/ershoufang/shaoyaoju/" target="_blank">芍药居二手房</a><a href="https://bj.lianjia.com/ershoufang/sanyuanqiao/" target="_blank">三元桥二手房</a><a href="https://bj.lianjia.com/ershoufang/shuangqiao/" target="_blank">双桥二手房</a><a href="https://bj.lianjia.com/ershoufang/shibalidian1/" target="_blank">十八里店二手房</a><a href="https://bj.lianjia.com/ershoufang/shilihe/" target="_blank">十里河二手房</a><a href="https://bj.lianjia.com/ershoufang/sihui/" target="_blank">四惠二手房</a><a href="https://bj.lianjia.com/ershoufang/shifoying/" target="_blank">石佛营二手房</a><a href="https://bj.lianjia.com/ershoufang/shoudoujichang1/" target="_blank">首都机场二手房</a><a href="https://bj.lianjia.com/ershoufang/shilibao/" target="_blank">十里堡二手房</a><a href="https://bj.lianjia.com/ershoufang/suzhouqiao/" target="_blank">苏州桥二手房</a><a href="https://bj.lianjia.com/ershoufang/shahe2/" target="_blank">沙河二手房</a><a href="https://bj.lianjia.com/ershoufang/shuangjing/" target="_blank">双井二手房</a><a href="https://bj.lianjia.com/ershoufang/songjiazhuang/" target="_blank">宋家庄二手房</a><a href="https://bj.lianjia.com/ershoufang/shuangyushu/" target="_blank">双榆树二手房</a><a href="https://bj.lianjia.com/ershoufang/sijiqing/" target="_blank">四季青二手房</a><a href="https://bj.lianjia.com/ershoufang/shunyicheng/" target="_blank">顺义城二手房</a><a href="https://bj.lianjia.com/ershoufang/shijingshanqita1/" target="_blank">石景山其它二手房</a><a href="https://bj.lianjia.com/ershoufang/shunyiqita1/" target="_blank">顺义其它二手房</a><a href="https://bj.lianjia.com/ershoufang/sanlitun/" target="_blank">三里屯二手房</a><a href="https://bj.lianjia.com/ershoufang/shimenying/" target="_blank">石门营二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/tongzhou/" target="_blank">通州二手房</a><a href="https://bj.lianjia.com/ershoufang/tiantan/" target="_blank">天坛二手房</a><a href="https://bj.lianjia.com/ershoufang/taipingqiao1/" target="_blank">太平桥二手房</a><a href="https://bj.lianjia.com/ershoufang/tongzhoubeiyuan/" target="_blank">通州北苑二手房</a><a href="https://bj.lianjia.com/ershoufang/tuanjiehu/" target="_blank">团结湖二手房</a><a href="https://bj.lianjia.com/ershoufang/taiyanggong/" target="_blank">太阳宫二手房</a><a href="https://bj.lianjia.com/ershoufang/tiantongyuan1/" target="_blank">天通苑二手房</a><a href="https://bj.lianjia.com/ershoufang/tianshuiyuan/" target="_blank">甜水园二手房</a><a href="https://bj.lianjia.com/ershoufang/taoranting1/" target="_blank">陶然亭二手房</a><a href="https://bj.lianjia.com/ershoufang/tiancun1/" target="_blank">田村二手房</a><a href="https://bj.lianjia.com/ershoufang/tianzhu1/" target="_blank">天竺二手房</a><a href="https://bj.lianjia.com/ershoufang/tongzhouqita11/" target="_blank">通州其它二手房</a><a href="https://bj.lianjia.com/ershoufang/tianningsi1/" target="_blank">天宁寺二手房</a><a href="https://bj.lianjia.com/ershoufang/tiangongyuan/" target="_blank">天宫院二手房</a><a href="https://bj.lianjia.com/ershoufang/tiangongyuannan/" target="_blank">天宫院南二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/wanliu/" target="_blank">万柳二手房</a><a href="https://bj.lianjia.com/ershoufang/wukesong1/" target="_blank">五棵松二手房</a><a href="https://bj.lianjia.com/ershoufang/wudaokou/" target="_blank">五道口二手房</a><a href="https://bj.lianjia.com/ershoufang/wanda14/" target="_blank">万达二手房</a><a href="https://bj.lianjia.com/ershoufang/wuyihuayuan/" target="_blank">武夷花园二手房</a><a href="https://bj.lianjia.com/ershoufang/wangjing/" target="_blank">望京二手房</a><a href="https://bj.lianjia.com/ershoufang/weigongcun/" target="_blank">魏公村二手房</a><a href="https://bj.lianjia.com/ershoufang/wulidian/" target="_blank">五里店二手房</a><a href="https://bj.lianjia.com/ershoufang/wanshoulu1/" target="_blank">万寿路二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/xicheng/" target="_blank">西城二手房</a><a href="https://bj.lianjia.com/ershoufang/xueyuanlu1/" target="_blank">学院路二手房</a><a href="https://bj.lianjia.com/ershoufang/xinjiekou2/" target="_blank">新街口二手房</a><a href="https://bj.lianjia.com/ershoufang/xizhimen1/" target="_blank">西直门二手房</a><a href="https://bj.lianjia.com/ershoufang/xidan/" target="_blank">西单二手房</a><a href="https://bj.lianjia.com/ershoufang/xuanwumen12/" target="_blank">宣武门二手房</a><a href="https://bj.lianjia.com/ershoufang/xisanqi1/" target="_blank">西三旗二手房</a><a href="https://bj.lianjia.com/ershoufang/xihongmen/" target="_blank">西红门二手房</a><a href="https://bj.lianjia.com/ershoufang/xiaoxitian1/" target="_blank">小西天二手房</a><a href="https://bj.lianjia.com/ershoufang/xishan21/" target="_blank">西山二手房</a><a href="https://bj.lianjia.com/ershoufang/xiaotangshan1/" target="_blank">小汤山二手房</a><a href="https://bj.lianjia.com/ershoufang/xierqi1/" target="_blank">西二旗二手房</a><a href="https://bj.lianjia.com/ershoufang/xibahe/" target="_blank">西坝河二手房</a><a href="https://bj.lianjia.com/ershoufang/xiluoyuan/" target="_blank">西罗园二手房</a><a href="https://bj.lianjia.com/ershoufang/xisi1/" target="_blank">西四二手房</a><a href="https://bj.lianjia.com/ershoufang/xibeiwang/" target="_blank">西北旺二手房</a><a href="https://bj.lianjia.com/ershoufang/xingong/" target="_blank">新宫二手房</a><a href="https://bj.lianjia.com/ershoufang/xiguanhuandao/" target="_blank">西关环岛二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/yizhuangkaifaqu/" target="_blank">亦庄开发区二手房</a><a href="https://bj.lianjia.com/ershoufang/yanqing/" target="_blank">延庆二手房</a><a href="https://bj.lianjia.com/ershoufang/yanjiao/" target="_blank">燕郊二手房</a><a href="https://bj.lianjia.com/ershoufang/yuetan/" target="_blank">月坛二手房</a><a href="https://bj.lianjia.com/ershoufang/yongdingmen/" target="_blank">永定门二手房</a><a href="https://bj.lianjia.com/ershoufang/yangqiao1/" target="_blank">洋桥二手房</a><a href="https://bj.lianjia.com/ershoufang/yuegezhuang/" target="_blank">岳各庄二手房</a><a href="https://bj.lianjia.com/ershoufang/yuquanying/" target="_blank">玉泉营二手房</a><a href="https://bj.lianjia.com/ershoufang/yuquanlu11/" target="_blank">玉泉路二手房</a><a href="https://bj.lianjia.com/ershoufang/yangzhuang1/" target="_blank">杨庄二手房</a><a href="https://bj.lianjia.com/ershoufang/yayuncun/" target="_blank">亚运村二手房</a><a href="https://bj.lianjia.com/ershoufang/yansha1/" target="_blank">燕莎二手房</a><a href="https://bj.lianjia.com/ershoufang/yizhuang1/" target="_blank">亦庄二手房</a><a href="https://bj.lianjia.com/ershoufang/yayuncunxiaoying/" target="_blank">亚运村小营二手房</a><a href="https://bj.lianjia.com/ershoufang/yuanmingyuan/" target="_blank">圆明园二手房</a><a href="https://bj.lianjia.com/ershoufang/yanqingqita1/" target="_blank">延庆其它二手房</a><a href="https://bj.lianjia.com/ershoufang/youanmenwai/" target="_blank">右安门外二手房</a><a href="https://bj.lianjia.com/ershoufang/youanmennei11/" target="_blank">右安门内二手房</a><a href="https://bj.lianjia.com/ershoufang/yuqiao/" target="_blank">玉桥二手房</a><a href="https://bj.lianjia.com/ershoufang/yizhuangkaifaquqita1/" target="_blank">亦庄开发区其它二手房</a><a href="https://bj.lianjia.com/ershoufang/yiheyuan/" target="_blank">颐和园二手房</a><a href="https://bj.lianjia.com/ershoufang/yanshan/" target="_blank">燕山二手房</a><a href="https://bj.lianjia.com/ershoufang/yancun/" target="_blank">阎村二手房</a><a href="https://bj.lianjia.com/ershoufang/yuhuayuan/" target="_blank">郁花园二手房</a><a href="https://bj.lianjia.com/ershoufang/yinghai/" target="_blank">瀛海二手房</a></div><div><a href="https://bj.lianjia.com/ershoufang/zhongguancun/" target="_blank">中关村二手房</a><a href="https://bj.lianjia.com/ershoufang/zizhuqiao/" target="_blank">紫竹桥二手房</a><a href="https://bj.lianjia.com/ershoufang/zhichunlu/" target="_blank">知春路二手房</a><a href="https://bj.lianjia.com/ershoufang/zaojunmiao/" target="_blank">皂君庙二手房</a><a href="https://bj.lianjia.com/ershoufang/zhongyangbieshuqu1/" target="_blank">中央别墅区二手房</a><a href="https://bj.lianjia.com/ershoufang/zuoanmen1/" target="_blank">左安门二手房</a><a href="https://bj.lianjia.com/ershoufang/zhaogongkou/" target="_blank">赵公口二手房</a><a href="https://bj.lianjia.com/ershoufang/zaoyuan/" target="_blank">枣园二手房</a><a href="https://bj.lianjia.com/ershoufang/zhaoyangqita/" target="_blank">朝阳其它二手房</a></div></div></div></div></div></div></div>
+
+<script src="https://s1.ljcdn.com/feroot/pc/asset/base/fe.js?_v=20191203150847"></script><script src="https://s1.ljcdn.com/feroot/pc/asset/common/common.js?_v=20191203150847"></script><div style="display:none"><script src="https://s1.ljcdn.com/feroot/dep/ljanalytics.js?_v=20191203150847"></script></div><div id="only" data-city="bj" data-page="city_index"></div>
+
+<script>var path = 'https://s1.ljcdn.com/feroot/pc/asset?_v=20191203150847'.split("?");require.config({baseUrl: path[0],paths: {'echarts' : '../../dep/echarts-1.4.1/build/echarts','echarts/chart/bar' : '../../dep/echarts-1.4.1/build/echarts','echarts/chart/line' : '../../dep/echarts-1.4.1/build/echarts','echarts/chart/pie' : '../../dep/echarts-1.4.1/build/echarts','common': 'common','jquery-ui': '../../dep/jquery-ui/jquery-ui.min'},urlArgs:  path[1]});</script>
+<script type="text/javascript">
+    require(['city/main'], function (main) {
+        main();
+    });
+</script>
+<script>require(['common/suggestion'], function (suggestion) {suggestion.init({requestOptions: {cityId: '110000',cityName: '北京'},url: '/?r=api/headerSearch&q=',main: '#keyword-box',appendTo: '#suggest-cont'});});</script>
+<div class="loninContaner"><div class="overlay_bg"></div><div class="panel_login animated" id="dialog"><div class="panel_info"><i class="close_login" >&times</i><div class="panel_tab"><div class="title"><div class="fl">账号密码登录</div></div><div class="clear"></div><div id="con_login_user"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users" placeholder="请输入手机号"  maxlength="11" /></li><li class="item border-b pwd"><input type="password" class="the_input password" maxlength="20" placeholder="请输入登录密码"/><em class="password-view"></em></li><li class="item checkVerimg" style="display:none;"><input type="text" class="the_input ver-img" maxlength="6"  placeholder="请输入验证码"/><img class="verImg"></li><li class="item drag" style="display:none;"><div id="drag"></div></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked/></span>7天内免登录</label><a href="javascript:;" rel="nofollow" class="toforget">忘记密码</a></li><li class="li_btn"><a class="login-user-btn"  />登录</a></li><li class="footer-link"><a href="javascript:;" rel="nofollow" class="totellogin">手机快捷登录</a></li></ul></form></div><div id="con_login_agent" class="undis"><form action="" method="post"><ul><li class="item"><dd></dd><input type="text" class="the_input users" placeholder="输入经纪人ID号码" /></li><li class="item"><input type="password" class="the_input password"  placeholder="登录密码"/></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked/></span>7天内免登录</label><a href="https://passport.lianjia.com/register/resources/lianjia/forget.html?service=http://bj.lianjia.com/" rel="nofollow">忘记密码</a></li><li><input class="login-agent-btn" value="立即登录"/></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_tel"><div class="panel_info"><i class="close_login">&times</i><div class="panel_tab"><div class="title"><div class="fl">手机快捷登录</div><div class="register_text_tel">别担心，无账号自动注册不会导致手机号被泄露</div></div><div class="clear"></div><div id="con_login_user_tel"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users_tel" maxlength="11" placeholder="请输入手机号" /></li><!-- <li class="item pwd"><input type="password" class="the_input password_tel"  placeholder="请输入短信验证码"/></li> --><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6"  placeholder="请输入验证码"/><img class="verImg"></li><li class="item border-b Verify"><input type="text" class="the_input verifycode" maxlength="6"  placeholder="请输入短信验证码"/><a class="send_verify_code" id="send_verify_code_tel" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="send_verify_code_s" id="send_verify_code_tel_s" href="javascript:;" rel="nofollow"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="remember" value="1" class="mind-login" checked/></span>7天内免登录</label></li><li class="li_btn"><a class="login-user-tel-btn"  />登录</a></li><li class="footer-link"><a href="javascript:;" rel="nofollow" class="tologin">账号密码登录</a></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_reg"><div class="panel_info"><i class="close_login" >&times</i><div class="panel_tab"><div class="title"><div class="fl">手机号码注册</div><label class="fr register_text">已有账号？<a href="javascript:;" rel="nofollow" class="tologin">去登录</a></label></div><div class="clear"></div><div id="con_login_user_reg"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial users_reg"  maxlength="11" placeholder="请输入手机号" /></li><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6"  placeholder="请输入验证码"/><img class="verImg"></li><li class="item border-c Verify"><input type="text" class="the_input verifycode" maxlength="6"  placeholder="请输入短信验证码"/><a class="send_verify_code" id="send_verify_code_reg" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="item border-b pwd"><input type="password" class="the_input password_reg" maxlength="20"  placeholder="请输入密码（最少8位，数字+字母）"/><em class="password-view"></em></li><li class="send_verify_code_s" id="send_verify_code_reg_s" href="javascript:;" rel="nofollow"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_01"><label class="checkbox-btn"><span class="active"><input type="checkbox" name="read" value="1" class="read-protocol" checked/></span>我已阅读并同意</label><a class="toprotocol" href="//www.lianjia.com/zhuanti/protocol" target="_blank" >《链家用户使用协议》</a></li><li class="li_btn"><a class="register-user-btn"  />注册</a></li></ul></form></div></div></div><div class="registered"></div></div><div class="panel_login animated" id="dialog_forget"><div class="panel_info"><i class="close_login">&times</i><div class="panel_tab"><div class="title"><div class="fl">找回密码</div></div><div class="clear"></div><div id="con_forget_user_tel" class="con_forget_user_tel"><form action="" method="post"><ul><li class="item border-t userName"><input type="text" class="the_input topSpecial user_forget_phone" placeholder="请输入手机号"  maxlength="11" /></li><li class="item checkVerimg" style=""><input type="text" class="the_input ver-img" maxlength="6"  placeholder="请输入验证码"/><img class="verImg"></li><li class="item border-b Verify"><input type="text" class="the_input verifycode" maxlength="6"  placeholder="请输入短信验证码"/><a class="send_verify_code" id="send_verify_code_forget" href="javascript:;" rel="nofollow"><em>获取验证码</em></a></li><li class="item border-t pwd" style="margin-top:-1px;"><input type="password" class="the_input password_reg" maxlength="20"  placeholder="请输入密码（最少8位，数字+字母）"/><em class="password-view"></em></li><li class="send_verify_code_s" id="send_verify_code_forget_s"><em>没有收到验证码？</em><a class="voice_a">发送语音验证码</a></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_btn"><a class="user-forget"  />修改密码</a></li></ul></form></div><div id="con_forget_user_pw" class="con_forget_user_pw"><form action="" method="post"><ul><li class="item border-t pwd"><input type="password" class="the_input password_reg" maxlength="20"  placeholder="请输入密码（最少8位，数字+字母）"/><em class="password-view"></em></li><li class="show-error"><dd>用户名或密码错误</dd></li><li class="li_btn"><a class="modify-user-pswd"  />修改密码</a></li></ul></form></div></div></div><div class="registered"></div></div></div>
+<!-- LianjiaIM Style --><link property='stylesheet' rel="stylesheet" href="https://s1.ljcdn.com/feroot/pc/asset/lianjiaIM/css/lianjiaim.css?_v=20191203150847"/><script src="//s1.ljcdn.com/web-im-sdk/static/1.1/lianjiaim1.1.min.js?v=20191207"></script><script>(function() {var imConf = {"ajaxroot":"\/\/ajax.api.lianjia.com\/","apiroot":"http:\/\/newhouseapi.fang.lianjia.com\/","imAppid":"LIANJIA_WEB_20160624","imAppkey":"6dfdcee27d78b1107fceeca55d80b7bd"};let login = require('common/login');BeikeLoginSDK.getUserInfo(function(data){if (data && data.code === 1) {data.ucid = '';}window.LJIM = new LianjiaIM({appid: imConf.imAppid,appkey: imConf.imAppkey,login: login.openLoginDialog,is_ljbb: true,userData: data,downAppUrl: '//www.lianjia.com/client/',appDesc: '立即下载链家APP，随时随地聊~',staticRoot: 'https://s1.ljcdn.com/feroot/?_v=20191203150847'})});})();</script><script src='//s1.ljcdn.com/link-static/resource/plat_framework/fee/js/1.2.3/index.js' crossorigin="anonymous"></script>
+<script>
+    var uuid = document.cookie.match(/lianjia_uuid=([^;]+)/) ? document.cookie.match(/lianjia_uuid=([^;]+)/)[1] : '';
+    var ucid = document.cookie.match(/lianjia_token=([^;]+)/) ? document.cookie.match(/lianjia_token=([^;]+)/)[1] : '';
+    var is_test = $.env.getEnv() !== 'online';
+    function _plog(evtId, data, pageId) {
+        var defData = {
+            'plat_form': navigator.platform,
+            'page_url': window.location.href
+        }
+        data = $.extend(defData, data);
+        dt.notify(evtId,         // 错误名, 不能超过200个字符
+            pageId || window['js_ns'],               // 错误页面
+            data
+        );
+    }
+    window.dt && dt.set({
+        pid: 'lianjia-web', // [必填]项目id, 由灯塔项目组统一分配
+        uuid: uuid, // [可选]设备唯一id, 用于计算uv数&设备分布. 一般在cookie中可以取到, 没有uuid可用设备mac/idfa/imei替代. 或者在storage的key中存入随机数字, 模拟设备唯一id.
+        //uuid为必填选项，如果传空或不能保证唯一会导致设备版本等统计无法生效
+        ucid: ucid, // [可选]用户ucid, 用于发生异常时追踪用户信息, 一般在cookie中可以取到, 没有可传空字符串
+
+        is_test: is_test, // 是否为测试数据, 默认为false(测试模式下打点数据仅供浏览, 不会展示在系统中)
+        record: {
+            time_on_page: true,
+            performance: true,
+            js_error: true,
+            js_error_report_config: {
+                ERROR_RUNTIME: true,
+                ERROR_SCRIPT: false,
+                ERROR_STYLE: false,
+                ERROR_IMAGE: false,
+                ERROR_AUDIO: true,
+                ERROR_VIDEO: true,
+                ERROR_CONSOLE: false,
+                ERROR_TRY_CATCH: true,
+                checkErrorNeedReport: function (desc, stack) {
+                    if (!/\/\/(s1\.ljcdn\.com\/)/.test(desc) &&
+                        !/\/\/(s1\.ljcdn\.com\/)/.test(stack)) {
+                        return false;
+                    }
+                    if (/\/\/s1\.ljcdn\.com\/(link\-static\/resource\/plat_framework|web\-im\-sdk|vrlab)/.test(desc) ||
+                        /\/\/s1\.ljcdn\.com\/(link\-static\/resource\/plat_framework|web\-im\-sdk|vrlab)/.test(stack)) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        },
+
+        // 业务方的js版本号, 会随着打点数据一起上传, 方便区分数据来源
+        // 可以不填, 默认为1.0.0
+        version: '1.0.0',
+
+        // 对于如同
+        // xxx.com/detail/1.html
+        // xxx.com/detail/2.html
+        // xxx.com/detail/3.html
+        // ...
+        // 这种页面来说, 虽然url不同, 但他们本质上是同一个页面
+        // 因此需要业务方传入一个处理函数, 根据当前url解析出真实的页面类型(例如: 二手房列表/经纪人详情页), 以便灯塔系统对错误来源进行分类
+        // 回调函数说明
+        // 传入参数 => window.location
+        // 返回值 => 对应的的页面类型(50字以内, 建议返回汉字, 方便查看), 默认是返回当前页面的url
+        getPageType: function(location){ return (location.host+location.pathname) }
+    });
+    function _plog(evtId, data, pageId) {
+        var defData = {
+            'plat_form': navigator.platform,
+            'page_url': window.location.href
+        };
+        data = $.extend(defData, data);
+        dt.notify(evtId,
+            pageId || window.location.href,
+            data
+        );
+    }
+</script><script type="text/javascript">
+    BeikeLoginSDK.getUserInfo(function(data){
+        window.loginData = data;
+    });
+</script></body></html>

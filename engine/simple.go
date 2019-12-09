@@ -41,7 +41,7 @@ func (s SimpleEngine) Run(seeds ...Request) {
 func worker(r Request) (ParseResult, error) {
 	// 发送HTTP请求并获取响应数据
 	resp, err := fetcher.Fetch(r.Url)
-	logrus.Infof("Fetching url: %s", r.Url)
+	// log.Printf("Fetching url: %s", r.Url)
 	if err != nil {
 		logrus.Errorf("Fetch: error fetching url: %s: %v", r.Url, err)
 		return ParseResult{}, err
