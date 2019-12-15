@@ -5,7 +5,9 @@ import (
 	"crawler/engine"
 	"crawler/helper"
 	"crawler/model"
+	"encoding/json"
 	"fmt"
+	"log"
 	"regexp"
 	"strings"
 
@@ -31,10 +33,12 @@ var (
 )
 
 // ParseDetail解析HTTP响应内容二手房详情页
-func ParseDetail(contents []byte, title, cityName string) engine.ParseResult {
+func ParseDetail(contents []byte, id, url, title, cityName string) engine.ParseResult {
+	var result = engine.ParseResult{}
 	ershoufang, err := parseHouseBasicInfo(&contents, title)
 	if err != nil {
-		panic(err)
+		log.Printf("parseHouseBasicInfo error: %s, url: #%s\n", err, url)
+		return result
 	}
 	ershoufang.Title = title
 	ershoufang.CityName = cityName
@@ -43,13 +47,21 @@ func ParseDetail(contents []byte, title, cityName string) engine.ParseResult {
 	ershoufang.Price = helper.MustPrice(parseHouseFields(&contents, priceRe))
 	ershoufang.UnitPrice = helper.MustPrice(parseHouseFields(&contents, unitPriceRe))
 	ershoufang.Images = parseHouseImages(&contents, imageRe)
-	ershoufang.Characteristics = parseHouseCharacteristics(&contents)
+	ershoufang.Characteristics = parseHouseCharacteristics(&contents, url)
 	doorModelBetweenPoints, err := parseDoorModelBetweenPoints(&contents)
 	if err != nil {
-		panic(err)
+		log.Printf("parseHouseBasicInfo error: %s, url: #%s\n", err, url)
+		return result
 	}
 	ershoufang.DoorModelBetweenPoints = *doorModelBetweenPoints
-	return engine.ParseResult{Items: []interface{}{ershoufang}}
+	result.Items = []engine.Item{
+		{
+			Id:      id,
+			Url:     url,
+			Payload: ershoufang,
+		},
+	}
+	return result
 }
 
 // parseDoorModelBetweenPoints获取二手房详情页面户型分间数据
@@ -148,11 +160,6 @@ func parseHouseBasicInfo(contents *[]byte, title string) (*model.Ershoufang, err
 		base[title] = baseVals[index]
 	}
 
-	// marshal, err := json.Marshal(transactionTits)
-	// fmt.Printf("transactionTits: %+v, len: %d, title: %s\n", string(marshal), len(transactionTits), title)
-	// marshal, err = json.Marshal(transactionVals)
-	// fmt.Printf("transactionVals: %+v, len: %d, title: %s\n", string(marshal), len(transactionVals), title)
-
 	tlen := len(transactionTits)
 	vlen := len(transactionVals)
 	if tlen != vlen {
@@ -167,8 +174,12 @@ func parseHouseBasicInfo(contents *[]byte, title string) (*model.Ershoufang, err
 		}
 	}
 
-	// marshal, err = json.Marshal(transaction)
-	// fmt.Printf("transaction: %+v, len: %d, title: %s\n", string(marshal), len(transaction), title)
+	// 特殊处理防止存入到Elasticsearch动态识别字段将其设置为时间类型，强制使用text类型，这是因为数据具有类型确定性
+	for key, tran := range transaction {
+		if key == "挂牌时间" || key == "上次交易" {
+			transaction[key] = " " + tran
+		}
+	}
 
 	return &model.Ershoufang{
 		BaseInfo: model.ErshoufangBaseInfo{
@@ -179,7 +190,7 @@ func parseHouseBasicInfo(contents *[]byte, title string) (*model.Ershoufang, err
 }
 
 // parseHouseBasicInfo获取二手房详情页面房源特色数据
-func parseHouseCharacteristics(contents *[]byte) []map[string]string {
+func parseHouseCharacteristics(contents *[]byte, url string) []map[string]string {
 	reader := bytes.NewReader(*contents)
 	doc, err := goquery.NewDocumentFromReader(reader)
 	if err != nil {
@@ -188,25 +199,37 @@ func parseHouseCharacteristics(contents *[]byte) []map[string]string {
 	var characteristics = make([]map[string]string, 0)
 	var titS = make([]string, 0)
 	var valS = make([]string, 0)
-	doc.Find(".box-l div .introContent.showbasemore div").Find("div").Each(func(index int, selection *goquery.Selection) {
+	selection := doc.Find(".box-l div .introContent.showbasemore div")
+	// 字段名
+	selection.Find("div[class=name]").Each(func(index int, selection *goquery.Selection) {
+		titS = append(titS, strings.TrimSpace(selection.Text()))
+	})
+
+	// 字段值
+	selection.Find("div[class=name]+div").Each(func(index int, selection *goquery.Selection) {
 		content := strings.TrimSpace(selection.Text())
-		if index%2 == 0 {
-			titS = append(titS, content)
-		} else {
-			if selection.Find("a").Nodes != nil {
-				// 房源标签
-				var tags = make([]string, 0)
-				selection.Find("a").Each(func(ai int, as *goquery.Selection) {
-					tags = append(tags, strings.TrimSpace(as.Text()))
-				})
-				if tags != nil {
-					valS = append(valS, strings.Join(tags, "|"))
-				}
-			} else {
-				valS = append(valS, content)
+		if selection.Find("a").Nodes != nil {
+			// 房源标签
+			var tags = make([]string, 0)
+			selection.Find("a").Each(func(ai int, as *goquery.Selection) {
+				tags = append(tags, strings.TrimSpace(as.Text()))
+			})
+			if tags != nil {
+				valS = append(valS, strings.Join(tags, "|"))
 			}
+		} else {
+			valS = append(valS, content)
 		}
 	})
+
+	// 字段值个数不匹配过滤
+	if len(valS) != len(titS) {
+		titSMarshal, _ := json.Marshal(titS)
+		valSMarshal, _ := json.Marshal(valS)
+		helper.LoggerFile("lianjia-parser-detail", "URL: #%s, titS: %s, titSlen: %d, valS: %s, valSlen: %d", url, titSMarshal, len(titS), valSMarshal, len(valS))
+		return nil
+	}
+
 	for index, tit := range titS {
 		characteristics = append(characteristics, map[string]string{tit: valS[index]})
 	}

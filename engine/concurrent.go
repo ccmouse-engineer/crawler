@@ -1,11 +1,5 @@
 package engine
 
-import (
-	"crawler/model"
-	"encoding/json"
-	"log"
-)
-
 // accessedURLs访问过的URL
 var accessedURLs = make(map[string]bool)
 
@@ -13,6 +7,7 @@ var accessedURLs = make(map[string]bool)
 type ConcurrentEngine struct {
 	Scheduler   Scheduler
 	WorkerCount int
+	ItemChan    chan Item
 }
 
 // Scheduler调度器接口类型
@@ -47,16 +42,13 @@ func (c *ConcurrentEngine) Run(seeds ...Request) {
 	}
 
 	// 接收请求处理后数据
-	houseNum := 1
 	for {
 		parseResult := <-out
 		// 展示处理结果
 		for _, item := range parseResult.Items {
-			if ershoufang, ok := item.(*model.Ershoufang); ok {
-				marshal, _ := json.Marshal(ershoufang)
-				log.Printf("Got item #%d: %+v\n", houseNum, string(marshal))
-				houseNum++
-			}
+			go func(itemData Item) {
+				c.ItemChan <- itemData
+			}(item)
 		}
 
 		// 注册处理结果中的请求到调度器

@@ -14,6 +14,8 @@ var (
 	houseRe = regexp.MustCompile(`<a[\s\w="-]+href="([\w:/.]*html)"[\s\w="-]+data-housecode="\w+"[\s\w="-]+>([^><]+)</a>`)
 	// 匹配城市页面下的二手房更多页
 	nextRe = regexp.MustCompile(`<div\s+class="page-box\s+house-lst-page-box"\s+comp-module='page'\s+page-url="/ershoufang/pg\{page\}"page-data='\{"totalPage":(\d+),"curPage":(\d+)\}'></div>`)
+	// 匹配城市页面二手房详情URL
+	idURLRe = regexp.MustCompile(`[\w:/.]+[/]{1}(\d+).html`)
 )
 
 // ParseCity解析HTTP响应内容城市
@@ -22,12 +24,12 @@ func ParseCity(contents []byte, cityName, prefixURL string, isFirstPage bool) (p
 	houses := LinkDeduplication(matchsHouse)
 	for _, house := range houses {
 		for url, title := range house {
-			// title := cityName + "|#title" + title + "|#url:" + url
-			parseResult.Items = append(parseResult.Items, title)
+			match := idURLRe.FindSubmatch([]byte(url))
+			id := string(match[1])
 			parseResult.Requests = append(parseResult.Requests, engine.Request{
 				Url: url,
 				ParserFunc: func(c []byte) engine.ParseResult {
-					return ParseDetail(c, title, cityName)
+					return ParseDetail(c, id, url, title, cityName)
 				},
 			})
 		}
@@ -38,12 +40,9 @@ func ParseCity(contents []byte, cityName, prefixURL string, isFirstPage bool) (p
 		pages := generateMultiPages(matchsNext, prefixURL)
 		for _, page := range pages {
 			for url, title := range page {
-				// log.Printf("city URL: #%s\n", page)
 				parseResult.Requests = append(parseResult.Requests, engine.Request{
-					Url: url,
-					ParserFunc: func(c []byte) engine.ParseResult {
-						return ParseCity(c, cityName+"-"+title, prefixURL, false)
-					},
+					Url:        url,
+					ParserFunc: CityParse(cityName+"-"+title, prefixURL, false),
 				})
 			}
 		}
@@ -53,16 +52,21 @@ func ParseCity(contents []byte, cityName, prefixURL string, isFirstPage bool) (p
 			for url, title := range curCityURL {
 				log.Printf("city #%s, URL: #%s\n", title, url)
 				parseResult.Requests = append(parseResult.Requests, engine.Request{
-					Url: url,
-					ParserFunc: func(c []byte) engine.ParseResult {
-						return ParseCity(c, cityName+"-"+title, prefixURL, false)
-					},
+					Url:        url,
+					ParserFunc: CityParse(cityName+"-"+title, prefixURL, false),
 				})
 			}
 		}
 	}
 
 	return
+}
+
+// CityParse城市解析
+func CityParse(name, url string, isFirstPage bool) engine.ParserFunc {
+	return func(contents []byte) engine.ParseResult {
+		return ParseCity(contents, name, url, isFirstPage)
+	}
 }
 
 // findMoreCurrentCityURLs获取当前城市下更多的区域二手房链接

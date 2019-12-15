@@ -3,13 +3,22 @@ package main
 import (
 	"crawler/aim/lianjia/parser"
 	"crawler/engine"
+	"crawler/persist"
 	"crawler/scheduler"
 )
 
 func main() {
+	// 获取存储爬取项服务
+	itemSaver, err := persist.ItemSaver("lianjia_esf")
+	if err != nil {
+		panic(err)
+	}
+
+	// 开启并发爬取数据引擎
 	e := engine.ConcurrentEngine{
 		Scheduler:   &scheduler.QueueScheduler{},
-		WorkerCount: 50,
+		WorkerCount: 100,
+		ItemChan:    itemSaver,
 	}
 
 	// 爱卡汽车
@@ -24,7 +33,7 @@ func main() {
 	e.Run(engine.Request{
 		Url: "https://www.lianjia.com/city/",
 		ParserFunc: func(c []byte) engine.ParseResult {
-			return parser.ParseCityList(c, "ershoufang", 1)
+			return parser.ParseCityList(c, "ershoufang", -1)
 		},
 	})
 }

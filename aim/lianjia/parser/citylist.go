@@ -12,24 +12,20 @@ import (
 var cityListRe = regexp.MustCompile(`<a\s+href="(https://\w+.lianjia.com/)">([^<]+)</a>`)
 
 // ParseCityList解析HTTP响应内容城市列表
-func ParseCityList(contents []byte, category string, number int) (parseResult engine.ParseResult) {
+func ParseCityList(contents []byte, category string, limit int) (parseResult engine.ParseResult) {
 	matchs := cityListRe.FindAllSubmatch(contents, -1)
 	cities := LinkDeduplication(matchs)
 	start := 1
 	for _, city := range cities {
-		if number != -1 && start > number {
+		if limit != -1 && start > limit {
 			break
 		}
 		start++
 		for url, name := range city {
 			url = helper.GetFullDomainURL(url, category)
-			// log.Printf("city URL: #%s\n", url)
-			parseResult.Items = append(parseResult.Items, name)
 			parseResult.Requests = append(parseResult.Requests, engine.Request{
-				Url: url,
-				ParserFunc: func(c []byte) engine.ParseResult {
-					return ParseCity(c, name, url, true)
-				},
+				Url:        url,
+				ParserFunc: CityParse(name, url, true),
 			})
 		}
 	}

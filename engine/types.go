@@ -1,18 +1,28 @@
 package engine
 
-// ParseResult代表解析响应结果结构体
+// ParserFunc解析函数类型声明
+type ParserFunc func([]byte) ParseResult
+
+// ParseResult解析响应结果类型声明
 type ParseResult struct {
-	Requests []Request
-	Items    []interface{}
+	Requests []Request // 请求
+	Items    []Item    // 数据
 }
 
-// Request代表请求参数结构体
+// Item解析响应数据项类型声明
+type Item struct {
+	Id      string      `json:"id"`
+	Url     string      `json:"url"`
+	Payload interface{} `json:"payload"`
+}
+
+// Request解析响应请求项类型声明
 type Request struct {
 	Url        string
-	ParserFunc func([]byte) ParseResult
+	ParserFunc ParserFunc
 }
 
-// NilParser代表一个空的解析器
+// NilParser一个空的解析器
 func NilParser([]byte) ParseResult {
 	return ParseResult{}
 }
