@@ -22,7 +22,7 @@ func TestGetFullDomainURL(t *testing.T) {
 }
 
 func TestLinkDeduplication(t *testing.T) {
-	c, err := ioutil.ReadFile("../aim/lianjia/parser/citylist_test_data.html")
+	c, err := ioutil.ReadFile("../aim/lianjia/parser/citylist_test_data.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -52,7 +52,7 @@ func TestMustPrice(t *testing.T) {
 }
 
 func TestGenerateMultiPages(t *testing.T) {
-	c, err := ioutil.ReadFile("../aim/lianjia/parser/city_test_data.html")
+	c, err := ioutil.ReadFile("../aim/lianjia/parser/city_test_data.txt")
 	if err != nil {
 		panic(err)
 	}

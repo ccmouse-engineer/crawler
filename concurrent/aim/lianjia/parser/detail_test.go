@@ -9,7 +9,7 @@ import (
 )
 
 func TestParseDetail(t *testing.T) {
-	c, err := ioutil.ReadFile("detail_test_data.html")
+	c, err := ioutil.ReadFile("detail_test_data.txt")
 	if err != nil {
 		t.Fatalf("fetcher.Fetch error: %s\n", err)
 	}

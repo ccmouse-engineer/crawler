@@ -7,7 +7,7 @@ import (
 
 // TestParseCityList test case
 func TestParseCityList(t *testing.T) {
-	c, err := ioutil.ReadFile("citylist_test_data.html")
+	c, err := ioutil.ReadFile("citylist_test_data.txt")
 	if err != nil {
 		t.Fatalf("fetcher.Fetch error: %v\n", err)
 	}
