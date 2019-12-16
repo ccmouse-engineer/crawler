@@ -12,7 +12,7 @@ import (
 func TestServerRPC(t *testing.T) {
 	const host = ":8859"
 
-	// 开启开启ItemSaverServer
+	// 开启ItemSaverServer
 	go serverRPC(host, "test")
 	time.Sleep(1 * time.Second)
 
@@ -92,7 +92,7 @@ func TestServerRPC(t *testing.T) {
 	}
 	result := ""
 
-	// 调用开启ItemSaverServer方法
+	// 调用ItemSaverServer方法
 	err = client.Call(config.ItemSaverRPC, item, &result)
 	if err != nil || result != "ok" {
 		t.Errorf("expect: %s, got: %s\n", result, err)
