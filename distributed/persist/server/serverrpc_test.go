@@ -1,22 +1,28 @@
-package persist
+package main
 
 import (
-	"context"
 	"crawler/concurrent/engine"
 	"crawler/concurrent/model"
-	"encoding/json"
-	"fmt"
+	"crawler/distributed/config"
+	"crawler/distributed/suport"
 	"testing"
-
-	"github.com/olivere/elastic"
+	"time"
 )
 
-func TestSave(t *testing.T) {
-	var err error
-	// 从elasticsearch读取数据
-	const index = "crawler_test"
-	// 数据源
-	expected := engine.Item{
+func TestServerRPC(t *testing.T) {
+	const host = ":8859"
+
+	// 开启开启ItemSaverServer
+	go serverRPC(host, "test")
+	time.Sleep(1 * time.Second)
+
+	// 开启ItemSaverClient
+	client, err := suport.NewClient(host)
+	if err != nil {
+		panic(err)
+	}
+
+	item := engine.Item{
 		Url: "https://aq.lianjia.com/ershoufang/103107046959.html",
 		Id:  "103107046959",
 		Payload: model.Ershoufang{
@@ -84,29 +90,11 @@ func TestSave(t *testing.T) {
 			},
 		},
 	}
+	result := ""
 
-	// 获取Elasticsearch客户端
-	client, err := elastic.NewClient(elastic.SetSniff(false))
-	if err != nil {
-		panic(err)
-	}
-
-	// 保存数据到elasticsearch
-	err = Save(expected, client, index)
-	if err != nil {
-		panic(err)
-	}
-
-	resp, err := client.Get().Index(index).Id(expected.Id).Do(context.Background())
-	if err != nil {
-		panic(err)
-	}
-
-	// 数据对比
-	var expectedByte, _ = json.Marshal(expected)
-	var expectedStr = string(expectedByte)
-	var actual = string(resp.Source)
-	if actual != expectedStr {
-		fmt.Printf("result should: %s, but got: %s\n", expectedStr, actual)
+	// 调用开启ItemSaverServer方法
+	err = client.Call(config.ItemSaverRPC, item, &result)
+	if err != nil || result != "ok" {
+		t.Errorf("expect: %s, got: %s\n", result, err)
 	}
 }

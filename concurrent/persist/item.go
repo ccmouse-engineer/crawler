@@ -336,7 +336,7 @@ func ItemSaver(index string) (chan engine.Item, error) {
 			itemNum++
 
 			// 存储数据到 Elasticsearch
-			err := save(item, client, index)
+			err := Save(item, client, index)
 			if err != nil {
 				bytes, _ := json.Marshal(item)
 				log.Printf("Item saver: error saving item %v: %v\n", err, string(bytes))
@@ -347,14 +347,13 @@ func ItemSaver(index string) (chan engine.Item, error) {
 }
 
 // 存储数据到 Elasticsearch
-func save(item engine.Item, client *elastic.Client, index string) error {
+func Save(item engine.Item, client *elastic.Client, index string) error {
 	// 获取非空上下文
 	ctx := context.Background()
 
 	// 转为JSON
 	bytes, err := json.Marshal(item)
 	if err != nil {
-		log.Printf("ab")
 		return err
 	}
 
