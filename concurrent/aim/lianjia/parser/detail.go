@@ -2,9 +2,9 @@ package parser
 
 import (
 	"bytes"
-	"crawler/engine"
-	"crawler/helper"
-	"crawler/model"
+	"crawler/concurrent/engine"
+	"crawler/concurrent/helper"
+	"crawler/concurrent/model"
 	"encoding/json"
 	"fmt"
 	"log"

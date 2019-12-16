@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"crawler/fetcher"
+	"crawler/concurrent/fetcher"
 
 	"github.com/sirupsen/logrus"
 )

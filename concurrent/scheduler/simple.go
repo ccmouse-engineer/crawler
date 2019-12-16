@@ -1,7 +1,7 @@
 package scheduler
 
 import (
-	"crawler/engine"
+	"crawler/concurrent/engine"
 )
 
 // QueueScheduler调度器接口的简单实现类型

@@ -1,23 +1,21 @@
-package parser
+package persist
 
 import (
-	"crawler/engine"
-	"crawler/model"
+	"context"
+	"crawler/concurrent/engine"
+	"crawler/concurrent/model"
 	"encoding/json"
-	"io/ioutil"
+	"fmt"
 	"testing"
+
+	"github.com/olivere/elastic"
 )
 
-func TestParseDetail(t *testing.T) {
-	c, err := ioutil.ReadFile("detail_test_data.html")
-	if err != nil {
-		t.Fatalf("fetcher.Fetch error: %s\n", err)
-	}
-	parseResult := ParseDetail(c, "103107046959", "https://aq.lianjia.com/ershoufang/103107046959.html", "房屋户型方正，布局合理采光好，布局合理，视野好", "安庆")
-	if len(parseResult.Items) != 1 {
-		t.Errorf("Items should contain 1 element; but was %v\n", parseResult.Items)
-	}
-
+func TestSave(t *testing.T) {
+	var err error
+	// 从elasticsearch读取数据
+	const index = "crawler_test"
+	// 数据源
 	expected := engine.Item{
 		Url: "https://aq.lianjia.com/ershoufang/103107046959.html",
 		Id:  "103107046959",
@@ -86,14 +84,29 @@ func TestParseDetail(t *testing.T) {
 			},
 		},
 	}
-	expectedStr, err := json.Marshal(expected)
-	ershoufang := parseResult.Items[0]
-	bytes, err := json.Marshal(ershoufang)
+
+	// 获取Elasticsearch客户端
+	client, err := elastic.NewClient(elastic.SetSniff(false))
 	if err != nil {
 		panic(err)
 	}
 
-	if string(bytes) != string(expectedStr) {
-		t.Errorf("expected %+v, \n but was %+v\n", string(expectedStr), string(bytes))
+	// 保存数据到elasticsearch
+	err = save(expected, client, index)
+	if err != nil {
+		panic(err)
+	}
+
+	resp, err := client.Get().Index(index).Id(expected.Id).Do(context.Background())
+	if err != nil {
+		panic(err)
+	}
+
+	// 数据对比
+	var expectedByte, _ = json.Marshal(expected)
+	var expectedStr = string(expectedByte)
+	var actual = string(resp.Source)
+	if actual != expectedStr {
+		fmt.Printf("result should: %s, but got: %s\n", expectedStr, actual)
 	}
 }

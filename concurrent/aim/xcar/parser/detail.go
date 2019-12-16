@@ -2,8 +2,8 @@ package parser
 
 import (
 	"bytes"
-	"crawler/engine"
-	"crawler/model"
+	"crawler/concurrent/engine"
+	"crawler/concurrent/model"
 	"errors"
 	"fmt"
 	"regexp"

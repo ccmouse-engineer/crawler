@@ -1,15 +1,15 @@
 package main
 
 import (
-	"crawler/aim/lianjia/parser"
-	"crawler/engine"
-	"crawler/persist"
-	"crawler/scheduler"
+	"crawler/concurrent/aim/lianjia/parser"
+	"crawler/concurrent/engine"
+	"crawler/concurrent/persist"
+	"crawler/concurrent/scheduler"
 )
 
 func main() {
 	// 获取存储爬取项服务
-	itemSaver, err := persist.ItemSaver("lianjia_esf")
+	itemSaver, err := persist.ItemSaver("lianjia_test")
 	if err != nil {
 		panic(err)
 	}
@@ -33,7 +33,7 @@ func main() {
 	e.Run(engine.Request{
 		Url: "https://www.lianjia.com/city/",
 		ParserFunc: func(c []byte) engine.ParseResult {
-			return parser.ParseCityList(c, "ershoufang", -1)
+			return parser.ParseCityList(c, "ershoufang", 1)
 		},
 	})
 }

@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"crawler/engine"
-	"crawler/helper"
+	"crawler/concurrent/engine"
+	"crawler/concurrent/helper"
 	"regexp"
 	"sort"
 	"strings"

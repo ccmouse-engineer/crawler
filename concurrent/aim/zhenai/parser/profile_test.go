@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"crawler/model"
+	"crawler/concurrent/model"
 	"io/ioutil"
 	"testing"
 )
